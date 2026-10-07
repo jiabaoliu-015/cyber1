@@ -1,0 +1,9 @@
+PATH=/usr/sbin:/usr/bin:/sbin:/bin
+
+*/2 * * * * root /opt/flc/scripts/svc-01-notice.sh
+*/2 * * * * root sleep 10 && /opt/flc/scripts/svc-02-audit.sh >> /var/log/svc-02.log 2>&1
+*/2 * * * * root sleep 20 && /opt/flc/scripts/svc-03-sync.sh >> /var/log/svc-03.log 2>&1
+* * * * * root sleep 10 && /opt/flc/scripts/svc-04-purge.sh
+* * * * * root sleep 55 && /opt/flc/scripts/svc-06-archive.sh >> /var/log/svc-06.log 2>&1
+*/2 * * * * root sleep 40 && /opt/flc/scripts/svc-05-collect.sh >> /var/log/svc-05.log 2>&1
+*/2 * * * * root sleep 58 && /opt/flc/scripts/svc-07-health.sh >> /var/log/svc-07.log 2>&1

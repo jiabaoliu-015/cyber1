@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AEROSPACE // TEAM BRAVO</title>
+
+<style>
+  :root{
+    --bg:#05070a; --panel:#0d1117; --border:#303943;
+    --success:#9fe0b8; --success-bg:#0d1a13;
+    --danger:#e39a94; --danger-bg:#1a0d0d;
+    --text:#ffffff; --text-dim:#8995a2;
+    --jwt-header:#e0787f; --jwt-payload:#c79ae3; --jwt-sig:#7fb8dd;
+  }
+
+  *{ box-sizing:border-box; }
+  html,body{
+    margin:0; padding:0; min-height:100vh; background:var(--bg);
+    color:var(--text); font-family:Arial,Helvetica,sans-serif;
+  }
+
+  code{ font-family:'Courier New',monospace; }
+
+  body::before{
+    content:""; position:fixed; inset:0; z-index:-1;
+    background:
+      linear-gradient(180deg,rgba(5,7,10,.9) 0%,rgba(5,7,10,.55) 60%,rgba(5,7,10,.9) 100%),
+      url("/static/images/aerospace-jet.jpeg") center/cover no-repeat;
+  }
+
+  nav.topbar{
+    height:60px; background:#0a0d12; display:flex;
+    align-items:center; justify-content:space-between;
+    padding:0 28px; border-bottom:1px solid rgba(255,255,255,.12);
+  }
+
+  .brand{ font-weight:700; font-size:13px; letter-spacing:3px; }
+
+  .status-pills{ display:flex; gap:8px; align-items:center; }
+
+  .pill{
+    font-size:10.5px; letter-spacing:1.5px; font-weight:700;
+    padding:5px 12px; border:1px solid #40484f;
+    color:#d9dee3; text-transform:uppercase;
+  }
+
+  main{
+    max-width:640px; margin:0 auto;
+    padding:64px 20px 90px;
+  }
+
+  h1{ font-size:26px; letter-spacing:3px; margin:0 0 8px; }
+  .subtitle{ color:var(--text-dim); font-size:13px; margin:0 0 32px; }
+
+  .option-card{
+    display:block; color:white; text-decoration:none;
+    background:rgba(8,11,15,.92);
+    border:1px solid var(--border);
+    padding:22px 24px; margin-bottom:16px;
+    cursor:pointer; transition:border-color .15s ease;
+  }
+
+  .option-card:hover{ border-color:#8d9aa8; }
+  .option-name{ font-size:16px; font-weight:700; letter-spacing:1px; margin-bottom:4px; }
+  .option-sub{ font-size:11px; color:var(--text-dim); letter-spacing:1px; }
+
+  .option-error{
+    margin-top:12px; padding:10px 12px;
+    font-size:12px; letter-spacing:.5px;
+    background:var(--danger-bg); color:var(--danger);
+    border:1px solid #4a1f1f;
+  }
+
+  .card{
+    background:rgba(8,11,15,.92);
+    border:1px solid var(--border);
+    padding:30px 28px; margin-bottom:20px;
+  }
+
+  .card h2{ font-size:18px; letter-spacing:2px; margin:0 0 4px; }
+  .card .subtitle{ margin-bottom:20px; }
+
+  .notes-list{ display:flex; flex-direction:column; gap:12px; }
+
+  .note{
+    background:#0a0d12; border:1px solid var(--border);
+    padding:14px 16px; font-size:12.5px;
+    line-height:1.7; color:var(--text-dim);
+  }
+
+  .note-title{
+    color:var(--text); font-weight:700;
+    letter-spacing:.5px; margin-bottom:4px;
+    font-size:11px; text-transform:uppercase;
+  }
+
+  .token-panel{ margin-top:20px; }
+  .label-row{
+    font-size:11px; color:var(--text-dim);
+    margin-bottom:6px; letter-spacing:.1em; text-transform:uppercase;
+  }
+
+  .token-raw{
+    font-family:'Courier New',monospace;
+    font-size:11px; line-height:1.9; word-break:break-all;
+    background:#000; border:1px solid var(--border);
+    padding:14px 16px;
+  }
+
+  .seg-header{ color:var(--jwt-header); }
+  .seg-payload{ color:var(--jwt-payload); }
+  .seg-sig{ color:var(--jwt-sig); }
+  .dot{ color:#566; }
+
+  .back-link{
+    display:inline-block; margin-top:20px;
+    color:#d9dee3; font-size:11px; letter-spacing:1.5px;
+    text-decoration:none; border-bottom:1px solid #40484f;
+    padding-bottom:3px;
+  }
+
+  .back-link:hover{ color:#fff; border-color:#8d9aa8; }
+</style>
+</head>
+
+<body>
+
+<nav class="topbar">
+  <div class="brand">AEROSPACE COMMAND // TEAM BRAVO</div>
+
+  <div class="status-pills">
+    <div class="pill">
+      ID: {{ (current_id or "NONE")|upper }}
+    </div>
+    <div class="pill">
+      {{ (level or "NOT SIGNED IN")|upper }}
+    </div>
+  </div>
+</nav>
+
+<main>
+
+{% if view == "selector" %}
+
+  <h1>BRAVO OPERATOR SIGN IN</h1>
+  <p class="subtitle">Select an account to continue.</p>
+
+  <a class="option-card" href="{{ url_for('team_bravo_castillo') }}">
+    <div class="option-name">R. CASTILLO</div>
+    <div class="option-sub">Operations Lead</div>
+    {% if error_castillo %}
+      <div class="option-error">{{ error_castillo }}</div>
+    {% endif %}
+  </a>
+
+  <a class="option-card" href="{{ url_for('team_bravo_okafor') }}">
+    <div class="option-name">J. OKAFOR</div>
+    <div class="option-sub">Maintenance</div>
+    {% if error_okafor %}
+      <div class="option-error">{{ error_okafor }}</div>
+    {% endif %}
+  </a>
+
+  <a class="option-card" href="{{ url_for('team_bravo_voss') }}">
+    <div class="option-name">T. VOSS</div>
+    <div class="option-sub">Logistics</div>
+  </a>
+
+
+{% elif view == "dashboard" %}
+
+  <div class="card">
+    <h2>WELCOME, T. VOSS</h2>
+    <p class="subtitle">Logistics — session dashboard</p>
+
+    <div class="notes-list">
+      {% for note in voss_notes %}
+        <div class="note">
+          <div class="note-title">{{ note.title }}</div>
+          {{ note.text }}
+        </div>
+      {% endfor %}
+    </div>
+
+    <a class="back-link" href="{{ url_for('team_bravo') }}">← BACK TO TEAM SELECT</a>
+  </div>
+
+
+{% elif view == "account" and account %}
+
+  <div class="card">
+    <h2>WELCOME, {{ account.name|upper }}</h2>
+    <p class="subtitle">Session notes</p>
+
+    <div class="notes-list">
+      {% for note in account.notes %}
+        <div class="note">{{ note }}</div>
+      {% endfor %}
+    </div>
+
+    <a class="back-link" href="{{ url_for('team_bravo') }}">← BACK TO TEAM SELECT</a>
+  </div>
+
+  {% if current_id == 'okafor' %}
+  <a href="http://127.0.0.1:5006" class="option-card">PERSONAL TERMINAL →</a>
+  {% endif %}
+{% endif %}
+
+</main>
+
+{% if view == "account" %}
+<script>
+window.switchAccount = async function(id) {
+  try {
+    const response = await fetch("{{ url_for('team_bravo_switch_account') }}", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({id: id})
+    });
+
+    const result = await response.json();
+
+    if (!result.ok) {
+      console.log(result.error || "Account switch failed.");
+      return;
+    }
+
+    window.location.href = "{{ url_for('team_bravo_account') }}";
+  } catch (error) {
+    console.log("Account switch failed.");
+  }
+};
+</script>
+{% endif %}
+
+</body>
+</html>

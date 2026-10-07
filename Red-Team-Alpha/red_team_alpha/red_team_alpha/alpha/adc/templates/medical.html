@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Medical Readiness</h2>
+
+<div class="card">
+
+<p><b>Last Assessment</b><br>{{ record.medical }}</p>
+
+<p><b>Status</b><br>Current</p>
+
+<p><b>Flight Clearance Expires</b><br>11 Sep 2027</p>
+
+<hr style="margin:25px 0;border:0;border-top:1px solid #252C33;">
+
+<h3>Need an update?</h3>
+
+<p>
+Medical documentation is processed through the Aerospace Medical Services
+Gateway and normally appears within one business day after review.
+</p>
+
+</div>
+
+{% endblock %}

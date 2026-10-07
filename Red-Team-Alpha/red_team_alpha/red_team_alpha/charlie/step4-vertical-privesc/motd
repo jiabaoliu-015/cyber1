@@ -1,0 +1,11 @@
+================================================================
+  AEROSPACE COMMAND // ARMING CONTROL SUBSYSTEM   (host ACC-ARM-01)
+  ** MAINTENANCE ACCESS: technician tier (low privilege) **
+================================================================
+  You are a field technician. Arming operations require root, which
+  you don't have. This account was provisioned with a few elevated
+  maintenance rights for on-site diagnostics; know what yours are
+  before you try to go further. Note that some maintenance records
+  in your home directory are owned by root and cannot be opened from
+  this account.
+================================================================

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Personnel Login</h2>
+
+<p>
+    Authenticate using your assigned personnel credentials to access
+    operational services.
+</p>
+
+{% if error %}
+<div class="notice">
+    <b>Authentication Failed</b>
+    <p>{{ error }}</p>
+</div>
+{% endif %}
+
+<form method="POST">
+
+    <input
+        name="username"
+        placeholder="Personnel ID"
+        autocomplete="username"
+    >
+
+    <input
+        name="password"
+        type="password"
+        placeholder="Password"
+        autocomplete="current-password"
+    >
+
+    <button>Authenticate</button>
+
+</form>
+
+{% endblock %}

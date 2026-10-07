@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AEROSPACE // ACCESS PORTAL</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#05070a; --card:rgba(8,11,15,0.92);
+    --line:rgba(255,255,255,0.15); --line2:rgba(255,255,255,0.30);
+    --ink:#fff; --soft:#d9dee3; --grey:#8995a2; --grey2:#8d9aa8;
+    --dim:#697581; --rule:#252c33; --alert:#d98a82;
+  }
+  body{
+    min-height:100vh; font-family:Arial,Helvetica,sans-serif;
+    background:var(--bg); color:#fff; overflow-x:hidden;
+    display:flex; align-items:center; justify-content:center;
+    padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0);
+  }
+  .background{
+    position:fixed; inset:0; z-index:-1;
+    background:
+      linear-gradient(90deg, rgba(5,7,10,0.98) 0%, rgba(5,7,10,0.86) 45%, rgba(5,7,10,0.45) 100%),
+      url("/static/images/aerospace-jet.jpeg") center/cover no-repeat;
+  }
+  .portal{width:1180px; max-width:92%; padding:60px 0}
+  .header{margin-bottom:34px; max-width:640px}
+  .logo{font-size:13px; letter-spacing:4px; color:var(--grey2); line-height:1.5; margin-bottom:16px}
+  h1{font-size:32px; letter-spacing:3px; margin-bottom:10px}
+  .subtitle{color:var(--grey); font-size:13px; line-height:1.6; max-width:52ch}
+
+  .panel{
+    background:var(--card); border:1px solid var(--line);
+    box-shadow:0 0 40px rgba(0,0,0,0.45); padding:34px; max-width:760px;
+  }
+  .channels{display:grid; grid-template-columns:repeat(3,1fr); gap:24px}
+  .ch-label{
+    font-size:10px; letter-spacing:2px; color:var(--dim);
+    margin-bottom:14px; display:flex; align-items:center; gap:8px;
+  }
+  .dot{width:6px; height:6px; background:var(--dim); border-radius:50%}
+  .ch--fail .dot{background:var(--alert)}
+  .ch--fail .ch-input{border-bottom-color:var(--alert)}
+  .ch-input{
+    width:100%; background:transparent; border:0;
+    border-bottom:1px solid var(--line2); color:#fff;
+    font-family:Arial,Helvetica,sans-serif; font-size:15px; letter-spacing:2px;
+    padding:8px 0; outline:none;
+  }
+  .ch-input::placeholder{color:#3a444f; letter-spacing:4px}
+  .ch-input:focus{border-bottom-color:#fff}
+
+  .auth-button{
+    display:block; width:100%; padding:16px; margin-top:30px;
+    background:var(--soft); color:var(--bg); border:0; cursor:pointer;
+    font-family:Arial,Helvetica,sans-serif; font-weight:bold;
+    font-size:13px; letter-spacing:3px; transition:background .2s ease;
+  }
+  .auth-button:hover{background:#fff}
+  .auth-button:focus-visible{outline:2px solid #fff; outline-offset:3px}
+  .note{margin-top:16px; font-size:11px; letter-spacing:1px; color:var(--dim)}
+
+  .alert{
+    margin-bottom:24px; padding:13px 16px; font-size:12px; letter-spacing:1px;
+    color:var(--alert); border:1px solid rgba(217,138,130,.35);
+    border-left:2px solid var(--alert); background:rgba(217,138,130,.06); line-height:1.5;
+  }
+  .alert b{color:#e7a49c}
+
+  .status{
+    margin-top:34px; padding-top:20px; border-top:1px solid var(--rule);
+    font-size:10px; color:var(--dim); letter-spacing:1px; line-height:1.8;
+  }
+  @media (max-width:600px){
+    .channels{grid-template-columns:1fr; gap:22px}
+    h1{font-size:26px}
+    .panel{padding:26px}
+  }
+</style>
+</head>
+<body>
+  <div class="background"></div>
+
+  <form class="portal" method="post" action="/unlock" autocomplete="off" novalidate>
+    <div class="header">
+      <div class="logo">AEROSPACE COMMAND<br>PERSONNEL ACCESS PORTAL</div>
+      <h1>AUTHORISATION REQUIRED</h1>
+      <p class="subtitle">
+        Enter the three branch keys &mdash; Alpha, Bravo, and Charlie. Each is issued on
+        completion of its own operation. The dashboard stays sealed until all three match.
+      </p>
+    </div>
+
+    {% if failed %}
+    <div class="alert">
+      <b>LINK REJECTED.</b> No match on {{ failed|join(" / ") }}.
+      Re-key the failed channel{{ "s" if failed|length > 1 else "" }} and resubmit.
+    </div>
+    {% endif %}
+
+    <div class="panel">
+      <div class="channels">
+        {% for ch in ["alpha","bravo","charlie"] %}
+        <label class="ch {{ 'ch--fail' if failed and ch|upper in failed else '' }}">
+          <span class="ch-label"><span class="dot"></span>KEY // {{ ch|upper }}</span>
+          <input class="ch-input" name="{{ ch }}" type="password" placeholder="&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot;"
+                 spellcheck="false" autocapitalize="off" aria-label="{{ ch|upper }} key">
+        </label>
+        {% endfor %}
+      </div>
+      <button class="auth-button" type="submit">AUTHORISE ACCESS</button>
+      <p class="note">All three keys are verified server-side.</p>
+    </div>
+
+    <div class="status">
+      SYSTEM STATUS: ONLINE<br>
+      AUTHORISATION: LOCKED &mdash; 3 CHANNELS PENDING
+    </div>
+  </form>
+</body>
+</html>

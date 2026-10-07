@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>ADC Identity Services Gateway</h2>
+
+<div class="card">
+
+<table>
+
+<tr>
+<td><b>Build</b></td>
+<td>ADC-AUTH-2026.9</td>
+</tr>
+
+<tr>
+<td><b>Status</b></td>
+<td>Operational</td>
+</tr>
+
+<tr>
+<td><b>Environment</b></td>
+<td>Production</td>
+</tr>
+
+<tr>
+<td><b>Gateway Mode</b></td>
+<td>Compatibility Enabled</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="card">
+
+<h3>Token Signing Configuration</h3>
+
+<table>
+
+<tr>
+<td><b>Primary Signing Profile</b></td>
+<td><code>RS256</code></td>
+</tr>
+
+<tr>
+<td><b>Legacy Validation Profile</b></td>
+<td>Shared-Key Compatibility</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="card">
+
+<h3>Regional Gateway Registry</h3>
+
+<p>
+Regional identity gateways remain synchronized with Aerospace Deployment
+Command communications infrastructure.
+</p>
+
+<table>
+
+<tr>
+<th>Reference</th>
+<th>Status</th>
+</tr>
+
+<tr>
+<td><code>X-Deploy-Ref-e04c</code></td>
+<td>Active</td>
+</tr>
+
+<tr>
+<td><code>X-Deploy-Ref-2b91</code></td>
+<td>Retiring</td>
+</tr>
+
+<tr>
+<td><code>X-Deploy-Ref-7f3a</code></td>
+<td>Historical</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="card">
+
+<h3>Legacy Client Support</h3>
+
+<p style="color:#697581;">
+Legacy field terminals continue using PEM-formatted public key exports during compatibility mode.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Standards</h3>
+
+<p>OpenID Connect Discovery v1.0</p>
+
+</div>
+
+{% endblock %}

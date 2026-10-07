@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FLC-OPS</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+<header>
+
+    <div class="banner">
+        FORWARD LOGISTICS COMMAND
+    </div>
+
+    <div class="subtitle">
+        OPERATIONS NETWORK (FLC-OPS)
+    </div>
+
+</header>
+
+<nav>
+    <a href="/profile">Personnel Record</a>
+    <a href="/reports">Logistics Reports</a>
+    {% if session.get("maintenance_unlocked") %}
+    <a href="/maintenance">Field Maintenance Terminal</a>
+    {% endif %}
+    <a href="/convoy">Convoy Archive</a>
+    <a href="/launch">Launch Archive</a>
+    <a href="/help">Support Centre</a>
+    <a href="/changelog">System Bulletins</a>
+    <a href="/logout">Logout</a>
+</nav>
+
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+<footer>
+    FORWARD LOGISTICS COMMAND • OPERATION IRON LEDGER • SECURITY DIRECTIVE 14-7
+</footer>
+
+</body>
+</html>

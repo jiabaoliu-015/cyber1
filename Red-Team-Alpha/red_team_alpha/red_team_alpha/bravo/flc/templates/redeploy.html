@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Personnel Redeployment</h2> 
+
+<div class="notice">
+
+    <b>Redeployment Status</b>
+
+    <p>
+        The latest available operational profile has been restored for this workstation.
+    </p>
+
+</div>
+
+<pre>{{ output }}</pre>
+
+{% if terminal_unlocked %}
+
+<div class="notice">
+
+    <b>Flag Recovered</b>
+
+    <p>
+        Field Maintenance Terminal has been unlocked for this session.
+    </p>
+
+    <a href="/maintenance">
+        <button>Open Field Maintenance Terminal</button>
+    </a>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

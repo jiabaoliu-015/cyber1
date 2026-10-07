@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="grid">
+<div class="card">
+
+<h2>Personnel Authentication</h2>
+
+<p>
+Restricted access for authorised Aerospace Deployment Command personnel.
+</p>
+
+{% if error %}
+<div class="alert">
+    Authentication failed. Verify your Personnel ID and Access Code.
+</div>
+{% endif %}
+
+<form method="POST">
+
+<label>Personnel ID</label>
+<input name="username">
+
+<label>Access Code</label>
+<input type="password" name="password">
+
+<button>AUTHENTICATE</button>
+
+</form>
+
+<p style="margin-top:30px;color:#697581;font-size:12px;">
+ADC Identity Services • Build 2026.9
+</p>
+
+</div>
+</div>
+
+{% endblock %}

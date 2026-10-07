@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Flight Orders</h2>
+
+<div class="card">
+
+<p><b>Operation</b><br>{{ record.deployment }}</p>
+
+<p><b>Movement Reference</b><br>{{ record.travel }}</p>
+
+<p><b>Status</b><br>Confirmed</p>
+
+<p>
+Forward Air Mobility Corridor authorization has been issued for operational
+movement.
+</p>
+
+<a href="/download/travel">
+<button>DOWNLOAD FLIGHT ORDERS</button>
+</a>
+
+</div>
+
+{% endblock %}

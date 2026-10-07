@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AEROSPACE // GLOBAL DASHBOARD</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='portal.css') }}">
+</head>
+<body>
+  <div class="background"></div>
+
+  <div class="dashboard">
+    <div class="header">
+      <div>
+        <div class="logo">AEROSPACE COMMAND<br>PERSONNEL ACCESS PORTAL</div>
+        <h1>ACCESS GRANTED</h1>
+        <p class="subtitle">GLOBAL PERSONNEL DASHBOARD &nbsp;/&nbsp; 3 CHANNELS VERIFIED</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>{{ stats.total }}</b><span>PERSONNEL</span></div>
+        <div class="stat"><b>{{ stats.active }}</b><span>ACTIVE</span></div>
+        <div class="stat"><b>{{ stats.stations }}</b><span>STATIONS</span></div>
+        <div class="stat"><b>{{ stats.countries }}</b><span>COUNTRIES</span></div>
+      </div>
+    </div>
+
+    <div class="map">
+      <canvas id="worldmap"></canvas>
+      <div class="map-tag"><i>&#9679;</i> GLOBAL DISPOSITION / LIVE</div>
+      <div class="legend">
+        <span><s class="l-active"></s>ACTIVE</span>
+        <span><s class="l-standby"></s>STANDBY</span>
+        <span><s class="l-deploy"></s>DEPLOYED</span>
+      </div>
+      <div class="tooltip" id="tooltip"></div>
+    </div>
+
+    <div class="dashboard-head">
+      <h2>TOP AGENTS</h2>
+      <span>TOP 25 / BY CLEARANCE</span>
+      <span class="rule"></span>
+      <span>SORTED: DISPOSITION</span>
+    </div>
+
+    <div class="team-grid">
+      {% for g in agents %}
+      <article class="team-card">
+        <div class="avatar" aria-hidden="true">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <rect width="64" height="64" fill="{{ g.tone }}"/>
+            <circle cx="32" cy="25" r="11" fill="#3d4653"/>
+            <path d="M11 61 c0-12 9-20 21-20 s21 8 21 20 z" fill="#3d4653"/>
+          </svg>
+        </div>
+        <div>
+          <div class="team-number">{{ "%02d"|format(g.index) }} // {{ g.id }}</div>
+          <div class="name">{{ g.name }}</div>
+          <div class="callsign">{{ g.callsign }}</div>
+          <div class="role">{{ g.role }}</div>
+          <div class="meta">
+            <span>{{ g.city }}, {{ g.country }}</span>
+            <span class="badge {{ 'cosmic' if g.clearance == 'COSMIC' else '' }}">{{ g.clearance }}</span>
+            <span class="st {{ g.status|lower }}"><s></s>{{ g.status }}</span>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+
+    <div class="status">
+      <span>SESSION GS07-{{ range(100000,999999)|random }} &nbsp;/&nbsp; TEAM DIRECTORY: ACTIVE</span>
+      <span>DISSEMINATION CONTROLLED &mdash; DO NOT COPY</span>
+    </div>
+
+    <div class="complete">
+      <div class="complete-eyebrow">OPERATION COMPLETE &nbsp;/&nbsp; ALL OBJECTIVES MET</div>
+      <h2 class="complete-title">CONGRATULATIONS</h2>
+      <p class="complete-msg">
+        Every branch Alpha, Bravo, and Charlie is cleared. All three keys
+        checked out and the full personnel dashboard is unsealed. Outstanding work seeing the
+        entire operation through.
+      </p>
+    </div>
+
+    <div class="signoff">CITS3006: Penetration Testing</div>
+    <div class="signoff">Mohammad Haddadpour </div>
+    <div class="signoff">Isaac Rutter</div>
+    <div class="signoff">Zarin Tasnim</div>
+    <div class="signoff">Senaya Wimalasena</div>
+    <div class="signoff">Dhul Ratnayaka Ratnayaka Mudiyanselage </div>
+  </div>
+
+  <script id="dots-data" type="application/json">{{ world_dots|tojson }}</script>
+  <script id="agents-data" type="application/json">{{ agents|tojson }}</script>
+  <script src="{{ url_for('static', filename='map.js') }}"></script>
+</body>
+</html>
+
