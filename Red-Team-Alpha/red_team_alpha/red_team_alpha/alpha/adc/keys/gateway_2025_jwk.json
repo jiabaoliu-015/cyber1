@@ -1,8 +1,0 @@
-{
-  "kty": "RSA",
-  "kid": "gateway-2025",
-  "alg": "RS256",
-  "use": "sig",
-  "n": "1cgiOCUfpfFA2KSHPy-LK0epnUHMNTNNeWZ-2WO2mitsdmRxFS2vAroJqudAZfHJVMD_mMM0ElhFgG4hEX4CEgn-9yHHG9K776gAfaWeBZk5m1yzgGvsTKmkCBZ1oafTzR07tXZl93Cx_6OP_GWOt3qC5i9DUuQ6f3jMO6oFU9cxvelWG63b2O0leZLQC3VdMsxArAOP_l_ROvUCwGSczK2k1Dc_sk8v3maIyNNeqoR0T1HTzcPzNLfv9QT7s28576zfM9Jlyz97wi8gyiH8e1H5XwDVdyDXUrG6ZxaUKBxUKrvgDSI87_Q_oMKU0OIOsaCU-v-Yr2fslEta666opw",
-  "e": "AQAB"
-}

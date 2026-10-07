@@ -1,8 +1,0 @@
-{
-  "kty": "RSA",
-  "kid": "archive-2024",
-  "alg": "RS256",
-  "use": "sig",
-  "n": "szT-yNsOKl-V89S7h8JcZukB2rmB0_L8_J1SRvIyVfbEZv22vzJAosD2ERIo4IBy9Rfxes8fER5_uExH8iOjGHFEaHJJt0hYUpzBQ2TEsKGDH-DA5F0TXHhrV1QWZVYOE0e8mJjfWnTU_D6yWueKKoSyAFIfCL7CRyLwRI0XmvUBa8ZmlfE-1aZsDqFk6hhwWTlz0pF65blka5As2SriOlDWoZkJ7f_6s8-63PAEqSKIs-w-NSEzvU-iKvIBBysZdK8eA9Tjol1PFYbrQQzeIO2kOWsyqYCFVJ-nrD7kLkut9L7yMhOKllUCR7ZctWl7ryb2yDCySWFMX5Qwy0yNhQ",
-  "e": "AQAB"
-}

@@ -1,8 +1,0 @@
-{
-  "kty": "RSA",
-  "kid": "pdcp-2026",
-  "alg": "RS256",
-  "use": "sig",
-  "n": "j4IVLKSb_KJ6AJuIK5GEXbUeq-ELD1jNvbV3l5PgGTROjXKCbwGS1HuYTyljasfAd9k2KXAMlkoo1p5LfgrF8TalQq23bP43YxXrQarYSJ-TIvo89nxyVLGKGo6evzShOo6exBE-DTbfdZtsoxOMPPUspkf5LykwR4DKH1DH-EPfMjjKnWqcH-egwPtRK3Zmd3_6kwFTZHtVEBxYwsbOTNgyiN8JjrQiuuuE8YDByFPls2r9sTO1W_X1FkcCiFphb1tCSHr5yMMwWJqguvUPa20EnAaD2uzImae4llf7AbAxSCZjRpLwCZqNMrasa4BOAtKDIEJcTllA5mRoS2OMcQ",
-  "e": "AQAB"
-}
