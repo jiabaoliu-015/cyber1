@@ -1,0 +1,29 @@
+services:
+  power:
+    build: .
+    container_name: erebus-power-distribution
+    # SSH is the player entry. The web backend stays on container-localhost
+    # and is NOT host-published; use `power` CLI over SSH instead.
+    ports:
+      - "127.0.0.1:2222:22"
+    expose:
+      - "8082"
+    volumes:
+      - ./data:/app/data:ro
+      # Image bundles only the source JPEG; runtime artifacts are in
+      # /app/generated-assets and never mounted or committed.
+      - ./entry:/app/entry:ro
+    environment:
+      # Runtime-only flags — run ./flags/init_flags.sh first to write .env.
+      # Required: `./flags/init_flags.sh` writes ignored .env before launching.
+      - PWR_FLAG_MID=${PWR_FLAG_MID:?Run ./flags/init_flags.sh first}
+      - PWR_FLAG_HARD=${PWR_FLAG_HARD:?Run ./flags/init_flags.sh first}
+      - PWR_FLAG_AGENT=${PWR_FLAG_AGENT:?Run ./flags/init_flags.sh first}
+      - PWR_RUN_DIR=/var/run/power
+      - PWR_ASSET_DIR=/app/generated-assets
+    networks:
+      - power-lab
+    restart: unless-stopped
+
+networks:
+  power-lab: {}

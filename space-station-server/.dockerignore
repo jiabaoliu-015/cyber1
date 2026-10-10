@@ -1,0 +1,12 @@
+# Generated/secret/dev files must not enter the image; the container generates
+# a fresh .env and runtime database on first start.
+.env
+.runtime/
+__pycache__/
+*.pyc
+ACCESS.md
+INSTRUCTOR.md
+tests/
+.git/
+Dockerfile
+.dockerignore

@@ -1,0 +1,21 @@
+Final Watch — Chief Engineer Hank Mercer (h.mercer) — Power Distribution
+Station: Erebus (Tallis Group, Callisto orbit, AI ORACLE) | Date: 2026-09-05 02:14
+Status: DECEASED — last logged at power distribution. Cause left open for player investigation.
+
+Shift Delta handover (compiled):
+  01:40 — Mercer took the board solo after sending the night tech to bunk.
+  His last keystrokes on the power console (uid h.mercer) were a bus-B load
+  check and a re-read of his own concern memo on First Officer Becker
+  (see mercer_concern_memo_becker.txt). Margin note in his hand:
+  "reboot it and leave me alone — bus B lug still running warm, K-9 feeder
+  humming at 17 Hz again. Told Becker to stay off the Two Key Console."
+  02:14 — Found slumped at the distribution panel, console still live, no
+  scram ordered, no two-key authorization attempted. Med called, no response.
+  Tools down, panel secured. Duty log closed by Shift Epsilon.
+
+Canon (provisional): Hank Mercer — Deceased, last logged at power distribution.
+Becker (First Officer, j.becker) was already drifting off-check-in at this point —
+see shift_notes/becker_unaccounted_058.txt. Nassar (Medical, y.nassar) logged the
+call from medbay — see medical_logs/nassar_last_badge_059.txt.
+
+No flag in this watch log. The flag is in the root scram report, not in personnel notes.

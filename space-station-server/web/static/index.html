@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Space Station Interactive System</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script defer src="/static/app.js"></script>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Station home"><span class="brand-mark" aria-hidden="true">✳</span> STATION<span class="brand-caption">CREW COMMONS</span></a>
+      <span class="channel"><span class="dot"></span> INTERNAL USE</span>
+    </header>
+    <section class="intro">
+      <p class="eyebrow">CREW COMMUNICATIONS</p>
+      <h1>Space Station Interactive System</h1>
+      <p class="lead motto" tabindex="0" title="Hover or focus to pause">
+        <span class="motto-track">
+          <span class="motto-text">Stay vigilant.&emsp;&emsp;&emsp;&emsp;Stay safe.&emsp;&emsp;&emsp;&emsp;All for one, and one for all.&emsp;&emsp;&emsp;&emsp;Caution: Slippery floors.&emsp;&emsp;&emsp;&emsp;No smoking aboard the space station. XD&emsp;&emsp;&emsp;&emsp;Before contacting Engineering, try restarting it. Unless it supplies oxygen.&emsp;&emsp;&emsp;&emsp;Your crewmates are not “non-essential equipment.” Stop listing them on disposal forms.&emsp;&emsp;&emsp;&emsp;Tallis Group values your feedback. Transmission fees may apply.&emsp;&emsp;&emsp;&emsp;Please keep all existential crises within your scheduled break.&emsp;&emsp;&emsp;&emsp;The airlock is not a suggestion box.&emsp;&emsp;&emsp;&emsp;Five crew members. One station. Please try to keep both numbers unchanged.&emsp;&emsp;&emsp;&emsp;“It was like that when I got here” is not a maintenance report.&emsp;&emsp;&emsp;&emsp;You are closer to the stars than ever. Your annual leave request is still pending.</span>
+          <span class="motto-text" aria-hidden="true">Stay vigilant.&emsp;&emsp;&emsp;&emsp;Stay safe.&emsp;&emsp;&emsp;&emsp;All for one, and one for all.&emsp;&emsp;&emsp;&emsp;Caution: Slippery floors.&emsp;&emsp;&emsp;&emsp;No smoking aboard the space station. XD&emsp;&emsp;&emsp;&emsp;Before contacting Engineering, try restarting it. Unless it supplies oxygen.&emsp;&emsp;&emsp;&emsp;Your crewmates are not “non-essential equipment.” Stop listing them on disposal forms.&emsp;&emsp;&emsp;&emsp;Tallis Group values your feedback. Transmission fees may apply.&emsp;&emsp;&emsp;&emsp;Please keep all existential crises within your scheduled break.&emsp;&emsp;&emsp;&emsp;The airlock is not a suggestion box.&emsp;&emsp;&emsp;&emsp;Five crew members. One station. Please try to keep both numbers unchanged.&emsp;&emsp;&emsp;&emsp;“It was like that when I got here” is not a maintenance report.&emsp;&emsp;&emsp;&emsp;You are closer to the stars than ever. Your annual leave request is still pending.</span>
+        </span>
+      </p>
+    </section>
+    <div class="login-layout">
+      <section class="feed" aria-label="Crew messages">
+        <section id="login-panel" class="panel login-panel" aria-labelledby="read-title">
+          <span class="lock-icon" aria-hidden="true">⌑</span>
+          <h2 id="read-title">Sign in to view messages</h2>
+          <p class="muted">For registered crew only.</p>
+          <form id="login-form" action="/api/login" method="post">
+            <label for="login-username">Username</label>
+            <input id="login-username" name="username" autocomplete="username" placeholder="Crew username" maxlength="40" required>
+            <label for="login-password">Password</label>
+            <input id="login-password" name="password" type="password" autocomplete="current-password" placeholder="Your password" required>
+            <button class="submit" id="login-button" type="submit">Sign in <span aria-hidden="true">↗</span></button>
+            <p id="login-status" class="form-status" role="status" aria-live="polite"></p>
+          </form>
+          <noscript><p class="error">Enable JavaScript to sign in.</p></noscript>
+        </section>
+
+      </section>
+    </div>
+    <footer><span>STATION / CREW COMMONS</span><span>Internal crew communications.</span></footer>
+  </main>
+</body>
+</html>

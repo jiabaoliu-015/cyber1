@@ -1,0 +1,23 @@
+services:
+  maintenance_utility:
+    build:
+      context: ..
+      dockerfile: compose/Dockerfile
+    environment:
+      - SERVICE_NAME=maintenance_utility
+      - ROOT_FLAG=CITS3006_ROOT_FLAG
+    entrypoint: sh -c "exec /opt/suseid/maintenance_utility"
+    healthcheck:
+      test: ["CMD", "/opt/suseid/maintenance_utility", "--healthcheck"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    volumes:
+      - maintenance_utility_data:/var/run/suseid
+      - maintenance_utility_entry:/entry
+      - maintenance_utility_output:/opt/suseid/output
+
+volumes:
+  maintenance_utility_data:
+  maintenance_utility_entry:
+  maintenance_utility_output:

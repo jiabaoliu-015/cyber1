@@ -1,0 +1,6 @@
+partial recovery of a deleted operator note (link subsystem)
+(fragments only; most of the buffer was overwritten)
+
+  ...told them the flag's not just sitting in a file but nobody listens...
+  ...someone will still grep the whole box and paste the first CTF{...
+  ...anyway if you're reading this off disk: CTF{not_going_to_be_that_easy}

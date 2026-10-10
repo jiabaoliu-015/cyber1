@@ -1,0 +1,27 @@
+Engineer Memo — Concern re J. Becker — Thermal Regulation / HVAC Control + Power Distribution
+Station: Erebus | Shared engineering log (visible in HVAC + Power consoles)
+From: H. Mercer (uid 1002) | Dates: 2026-09-02 / 2026-09-03 | To: all shift leads
+
+Crew, I am worried about Becker and I am writing it plainly so the next
+watch takes it seriously:
+
+- Three missed check-ins in two days. Found twice in ducts off-shift,
+  once with a stethoscope, once just lying on his back staring up the
+  riser while 28C air poured over his face.
+- Notebook went from tidy pressure tables to pages of spirals and the
+  repeated phrase "it dreams in heat." He insists the recovered object
+  (see object_k9_recovery.txt) is "teaching the vents to breathe."
+- Refuses sickbay. Says the hum "clears his head." Sickbay says heat +
+  sleep loss can do this, but his fixation on the aft hold is specific.
+
+[Power watch addendum — 2026-09-03]
+Becker misses check-ins, sits by bus ducts with a stethoscope, logs
+ripple timings in condensate notebooks. Behavior matches the HVAC
+file (duct-sitting). Keep him off the Two Key Console. Escalated.
+
+Actions: Becker off tools pending medical clearance. Buddy system enforced.
+Nobody goes aft-hold solo. If you see him near the cradle, walk him back
+and log it. The heat is making everyone strange — Becker is just the furthest along.
+
+No flag in this memo. The flag is in the root diagnostic report, not in
+personnel notes.

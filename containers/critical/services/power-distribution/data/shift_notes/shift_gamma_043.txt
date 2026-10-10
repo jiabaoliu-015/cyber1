@@ -1,0 +1,11 @@
+Shift Handover — Gamma 043 — Thermal Regulation / HVAC Control
+Station: Erebus | Watch: 16:00-00:00 | Lead: S. Patel
+
+- Supply 21.5C, return 24.1C, filter 82%. Highest this week.
+- Deck C complaints spiking. Recommend full engineer-authorized diagnostic.
+- Checked scheduler: cron is "* * * * * root /opt/hvac/process_job run",
+  input is /var/run/hvac/input, report lands at maintenance_report.txt.
+- Did NOT run it (no engineer token on this watch — default login only).
+  Next engineer watch: POST the correct content to /api/schedule/input,
+  then GET /api/maintenance/report.
+- flag: REDACTED — requires completed root diagnostic. This note has no flag.

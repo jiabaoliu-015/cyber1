@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "messages": [
+    {
+      "username": "captain",
+      "message": "Crew: duty assignments and maintenance requests are available in Station Applications. Keep investigation notes in your personal memo."
+    },
+    {
+      "username": "captain",
+      "author_label": "Jin Hong · Captain",
+      "message": "Morning, crew. Check the Scheduled Tasks Module before starting your shift, and submit equipment problems through Maintenance tickets."
+    },
+    {
+      "username": "captain",
+      "author_label": "Yara Nassar · Medical Officer",
+      "message": "Medical reminder: coffee is not a substitute for sleep. Neither is telling me you feel “mostly operational.” You are a person, not a ventilation fan."
+    },
+    {
+      "username": "captain",
+      "author_label": "Roman Beck · Researcher",
+      "message": "Please stop moving items in the research lab to “more sensible places.” Their current arrangement is deliberate. Whether it is sensible is a separate discussion."
+    },
+    {
+      "username": "captain",
+      "author_label": "Jin Hong · Captain",
+      "message": "Good discussion. Please apply this level of attention to your actual duties. And whoever labelled the airlock “Suggestions,” remove it."
+    }
+  ],
+  "memos": {},
+  "roster": [
+    {
+      "crew_name": "Jin Hong",
+      "shift_start": "06:00",
+      "station": "Command"
+    },
+    {
+      "crew_name": "Eli Voss",
+      "shift_start": "10:00",
+      "station": "Operations"
+    },
+    {
+      "crew_name": "Bem Okafor",
+      "shift_start": "14:00",
+      "station": "Power Distribution"
+    },
+    {
+      "crew_name": "Yara Nassar",
+      "shift_start": "18:00",
+      "station": "Medbay"
+    },
+    {
+      "crew_name": "Roman Beck",
+      "shift_start": "22:00",
+      "station": "Research"
+    }
+  ],
+  "events": [
+    {
+      "event_code": "COMMS_LAST_HUMAN_CONTACT",
+      "observed_at": "2026-09-17T21:40:00Z",
+      "detail": "{{FLAG_ROSTER}}"
+    }
+  ],
+  "manifests": [
+    {
+      "id": 2101,
+      "title": "Food Stores / Daily Allocation",
+      "data": "Day 17 ration allocations are within tolerance.",
+      "restricted": false
+    },
+    {
+      "id": 2102,
+      "title": "Water Reclamation / Overview",
+      "data": "Water recovery is steady at 93 percent.",
+      "restricted": false
+    },
+    {
+      "id": 2103,
+      "title": "O2 Reserve / Raw Sensor Feed",
+      "data": "Hour 0: 62.4%\nHour 3: 56.8%\nHour 6: 49.2%\nHour 9: 42.7%\n{{FLAG_MANIFEST}}",
+      "restricted": true
+    }
+  ]
+}

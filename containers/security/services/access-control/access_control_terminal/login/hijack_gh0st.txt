@@ -1,0 +1,13 @@
+   {d}---------------------------------------------------------{x}
+   {g}Good, you got my message.{x}
+   {d}something's off on this station. the crew's starting to act{x}
+   {d}insane, and i mean that clinically, not as a figure of speech.{x}
+   {d}i can't prove anything yet, but the company's sitting on{x}
+   {d}something, and i intend to find out what.{x}
+   {d}i cut this door pre-emptively. just in case. call it paranoia,{x}
+   {d}i'd love to be wrong.{x}
+
+   {d}everything i've got is in the notes under{x} {c}/opt/station/notes{x}{d}.{x}
+   {d}reads like a maintenance gripe list. it isn't.{x}
+   {a}don't trust them. don't trust ORACLE.{x}
+   {d}---------------------------------------------------------{x}

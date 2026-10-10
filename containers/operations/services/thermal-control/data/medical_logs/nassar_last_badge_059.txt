@@ -1,0 +1,18 @@
+Medbay Badge Log — Medical Officer Yara Nassar (y.nassar) — Station Erebus
+Date: 2026-09-05 03:02 | System: medbay | Linked: Power Distribution (Mercer call)
+
+03:02 — Last badge-in: y.nassar at medbay door, responding to the power-distribution
+call (Mercer, h.mercer — see engineer_logs/mercer_final_watch_058.txt).
+Nassar's note, short:
+  "Mercer down at power. Taking kit. Becker fixation note stands — he was right
+  about the hum and I wrote it off as heat. If I don't check back in 30, send someone."
+Badge-out never recorded. Kit gone from rack. No sign since.
+
+04:00 — Security sweep: medbay empty, door ajar, terminal locked on Becker's
+quarantine note (see quarantine_note_becker.txt). No struggle, no note.
+Status: MISSING — last badge-in, medbay.
+
+Canon (provisional): Yara Nassar — Missing, last badge-in medbay. Cause left open
+for player investigation. Do not confuse with Wu Yan (research lab sealed from inside).
+
+No flag in sickbay. Fluids and sleep are the treatment, not tokens.

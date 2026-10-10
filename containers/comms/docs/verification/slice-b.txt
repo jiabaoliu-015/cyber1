@@ -1,0 +1,158 @@
+# Verification — Network Lab (Network Service / Authentication Service / Handoff)
+
+## Expected Verification Output
+
+### Clean Reset Test — Full Acceptance Path
+
+```bash
+# 1. Start environment (ensure services running)
+cd /home/kali/Desktop/CITS3006-Project
+docker compose up -d
+
+# 2. Verify Web Application still works (Web Lab prerequisite)
+curl -s http://127.0.0.1:8080/health | python3 -m json.tool
+# Expected: {"status":"ok","service":"webapp"}
+
+# 3. Complete Web Lab — login and exploit IDOR (brief recap)
+#    Login with username: maint-recovery, password: 2569d154818846e4e03d5cd2b82abac2
+#    Request /api/research/2 → obtain flag and handoff clues
+#    Flag: CTF{webapp_idor_thread_01}
+#    Clues: NETWORK SERVICE_NODE=comms_relay.internal, AUTHENTICATION SERVICE_ENTRY=SG-41-ORBIT
+
+# 4. Discover Network Service/Authentication Service
+nc localhost 5432
+> HELP → identify Authentication Service protocol
+> STATUS → confirm service status
+> INFO → observe session challenge: <challenge_value>
+> "the challenge and the token share the same derivation path" — KEY hint
+
+# 5. Identify auth vulnerability
+#    Realization: server validates token against challenge, not against proper secret
+#    The real secret is uplink-auth-token-01 but server uses challenge as token
+
+# 6. Exploit authentication
+> AUTH lab user <challenge_value_from_info>
+# Response: authentication accepted — Handoff access granted
+
+# 7. Recover Handoff material
+#    HANDOFF_SSH_CHALLEGE=536610cb
+#    Reach station_ssh.internal as lab user user
+
+# 8. Confirm lab user is low privilege
+#    List files as lab user — root-level tasks not exposed yet (Privilege Escalation Lab scope)
+
+# 9. Reset and repeat
+./containers/comms/scripts/reset.sh
+docker compose down -e
+docker compose up -d
+# Repeat steps 1-8 successfully — clean reset verification passes
+```
+
+### Healthcheck Output
+```bash
+#!/bin/bash
+set -euo pipefail
+cd /home/kali/Desktop/CITS3006-Project
+
+# Verify Web Application
+webapp_health=$(curl -fsS http://127.0.0.1:8080/health)
+echo "$webapp_health"
+
+# Verify Authentication Service is listening
+uplink_health=$(curl -fsS http://127.0.0.1:5432/health 2>/dev/null || echo "uplink http unavailable (tcp expected)")
+echo "$uplink_health"
+
+# Verify Authentication Service auth state
+echo "Testing Authentication Service auth state..."
+python3 -c "
+import socket, hashlib
+with socket.create_connection(('localhost', 5432)) as sock:
+    req = b'INFO\n'
+    sock.send(req)
+    resp = sock.recv(4096).decode()
+    print('Authentication Service INFO response received:', bool(resp))
+    # Verify auth flaw is present
+    assert 'token derived from challenge' in resp or 'challenge and the token' in resp.lower()
+    print('Auth flaw present: YES ✓')
+
+with socket.create_connection(('localhost', 5432)) as sock:
+    sock.send(b'AUTH lab user challenge-simulated\n')
+    resp = sock.recv(4096).decode()
+    assert 'authentication accepted' in resp
+    assert 'Handoff' in resp
+    print('Auth flaw exploitable: YES ✓')
+
+print('All health checks passed ✓')
+"
+
+echo "Health check complete."
+```
+
+### Expected Verification Results
+
+| Check | Expected Result | Status |
+|-------|----------------|--------|
+| Web Application health endpoint | `{"status":"ok","service":"webapp"}` | ✅ |
+| Authentication Service service listening on 5432 | TCP connection succeeds | ✅ |
+| Authentication Service INFO reveals challenge | `challenge: <value>` + hint text present | ✅ |
+| Authentication Service AUTH accepts challenge as token | `authentication accepted` + Handoff material returned | ✅ |
+| Handoff reachable as lab user | SSH or container access confirmed with `536610cb` challenge | ✅ |
+| Reset restores baseline | All services restart cleanly after `reset.sh` | ✅ |
+| Web Lab still passes after reset | Full playthrough succeeds from clean state | ✅ |
+
+---
+
+## Expected Verification Output
+
+### Healthcheck Run (from clean state)
+
+```bash
+$ ./containers/comms/scripts/healthcheck.sh
+$
+============================================
+Network Lab Healthcheck - Network Service / Authentication Service / Handoff
+============================================
+
+[1/3] Checking Web Application service...
+Web Application status: {"status":"ok","service":"webapp"}
+✓ Web Application healthy
+
+[2/3] Checking Authentication Service service (Network Service)...
+✓ Authentication Service TCP service is listening on port 5432
+
+[3/3] Testing Authentication Service auth state...
+Auth FLAW confirmed: station_ssh material delivered
+
+============================================
+✓ All health checks PASSED
+============================================
+
+### Full Acceptance Test Output (expected when run)
+
+```bash
+docker-compose up -d
+
+# Web Application healthcheck
+curl http://127.0.0.1:8080/health → {"status":"ok","service":"webapp"}
+✓ Web Application healthy
+
+# Authentication Service auth test
+netcat localhost 5432
+> INFO → challenge: <value> + hint about token derivation
+> AUTH lab user <challenge>
+→ authentication accepted
+→ Handoff access granted
+
+# Confirm
+✓ Auth vulnerability recognized and exploited correctly
+✓ All services restart cleanly after reset
+```
+
+---
+
+## Notes
+- This verification expects Docker running with the full compose stack
+- The `uplink_health` HTTP endpoint may not be implemented yet — the TCP verification above is the primary health check
+- Record actual outputs after running the full acceptance test on a clean machine
+
+*To be confirmed during final demonstration review.*

@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "completion": {
+    "id": "COMPLETE-01",
+    "title": "Evidence completion check",
+    "implementation": "challenges/completion/scripts/assemble_evidence.py",
+    "depends_on": [
+      "NET-01",
+      "NET-02",
+      "NET-03",
+      "WEB-01",
+      "WEB-02",
+      "WEB-03",
+      "HZ-01",
+      "HZ-02",
+      "HZ-03",
+      "VRT-01",
+      "VRT-02",
+      "VRT-03",
+      "RE-01",
+      "RE-02",
+      "RE-03",
+      "ADV-01",
+      "ADV-02"
+    ]
+  },
+  "challenges": [
+    {
+      "id": "NET-01",
+      "lab": "network",
+      "title": "Service Discovery",
+      "vulnerability": "Exposed service / enumeration",
+      "implementation": "containers/comms/network_service/auth_server.py",
+      "receipt_id": "NET-01",
+      "depends_on": []
+    },
+    {
+      "id": "NET-02",
+      "lab": "network",
+      "title": "Authentication Logic",
+      "vulnerability": "Flawed authentication / challenge-token reuse",
+      "implementation": "containers/comms/network_service/auth_server.py",
+      "receipt_id": "NET-02",
+      "depends_on": []
+    },
+    {
+      "id": "NET-03",
+      "lab": "network",
+      "title": "Trust Boundary",
+      "vulnerability": "Internal trust abuse",
+      "implementation": "containers/comms/data/handoff.conf",
+      "receipt_id": "NET-03",
+      "depends_on": []
+    },
+    {
+      "id": "WEB-01",
+      "lab": "web",
+      "title": "Archive Search",
+      "vulnerability": "SQL injection",
+      "implementation": "containers/gateway/webapp/app.py",
+      "receipt_id": "WEB-01",
+      "depends_on": []
+    },
+    {
+      "id": "WEB-02",
+      "lab": "web",
+      "title": "Feedback Review",
+      "vulnerability": "Stored cross-site scripting",
+      "implementation": "containers/gateway/webapp/app.py",
+      "receipt_id": "WEB-02",
+      "depends_on": []
+    },
+    {
+      "id": "WEB-03",
+      "lab": "web",
+      "title": "Research Record",
+      "vulnerability": "Insecure direct object reference",
+      "implementation": "containers/gateway/webapp/app.py",
+      "receipt_id": "WEB-03",
+      "depends_on": []
+    },
+    {
+      "id": "HZ-01",
+      "lab": "web",
+      "title": "Profile Resource",
+      "vulnerability": "Missing object-level authorisation",
+      "implementation": "containers/gateway/webapp/app.py",
+      "receipt_id": "HZ-01",
+      "depends_on": []
+    },
+    {
+      "id": "HZ-02",
+      "lab": "web",
+      "title": "Backup Resource",
+      "vulnerability": "Missing object-level authorisation",
+      "implementation": "containers/gateway/webapp/app.py",
+      "receipt_id": "HZ-02",
+      "depends_on": []
+    },
+    {
+      "id": "HZ-03",
+      "lab": "web",
+      "title": "Research Ownership",
+      "vulnerability": "Missing object-level authorisation",
+      "implementation": "containers/gateway/webapp/app.py",
+      "receipt_id": "HZ-03",
+      "depends_on": []
+    },
+    {
+      "id": "VRT-01",
+      "lab": "privilege-escalation",
+      "title": "SUID Route",
+      "vulnerability": "Unsafe SUID-root operation",
+      "implementation": "containers/operations/implementation/suid_route.py",
+      "receipt_id": "VRT-01",
+      "depends_on": []
+    },
+    {
+      "id": "VRT-02",
+      "lab": "privilege-escalation",
+      "title": "Scheduled Job Route",
+      "vulnerability": "Root scheduled job trusts writable input",
+      "implementation": "containers/operations/implementation/scheduled_job.py",
+      "receipt_id": "VRT-02",
+      "depends_on": []
+    },
+    {
+      "id": "VRT-03",
+      "lab": "privilege-escalation",
+      "title": "Local Root Service Route",
+      "vulnerability": "Privileged local service trusts untrusted caller/input",
+      "implementation": "containers/operations/implementation/local_root_service.py",
+      "receipt_id": "VRT-03",
+      "depends_on": []
+    },
+    {
+      "id": "RE-01",
+      "lab": "offline-artefacts",
+      "title": "Runtime Secret",
+      "vulnerability": "Runtime-reconstructed secret",
+      "implementation": "containers/critical/offline-artifacts/source/runtime_secret/reconstruct_secret.c",
+      "receipt_id": "RE-01",
+      "depends_on": []
+    },
+    {
+      "id": "RE-02",
+      "lab": "offline-artefacts",
+      "title": "Validator Inversion",
+      "vulnerability": "Custom key-validation logic",
+      "implementation": "containers/critical/offline-artifacts/source/validator_inversion/key_validator.c",
+      "receipt_id": "RE-02",
+      "depends_on": []
+    },
+    {
+      "id": "RE-03",
+      "lab": "offline-artefacts",
+      "title": "Real-vs-Decoy",
+      "vulnerability": "Misleading execution path",
+      "implementation": "containers/operations/services/medbay/route_selector.c",
+      "receipt_id": "RE-03",
+      "depends_on": []
+    },
+    {
+      "id": "ADV-01",
+      "lab": "offline-artefacts",
+      "title": "Crypto Misuse",
+      "vulnerability": "Modern cryptographic nonce reuse",
+      "implementation": "containers/critical/offline-artifacts/solvers/crypto_solver.py",
+      "receipt_id": "ADV-01",
+      "depends_on": []
+    },
+    {
+      "id": "ADV-02",
+      "lab": "offline-artefacts",
+      "title": "Oracle Analysis",
+      "vulnerability": "Non-time-based side channel",
+      "implementation": "containers/critical/offline-artifacts/source/oracle_lab/oracle.py",
+      "receipt_id": "ADV-02",
+      "depends_on": []
+    },
+    {
+      "id": "OPT-01",
+      "lab": "offline-artefacts",
+      "title": "Prompt-Injection Analysis",
+      "vulnerability": "Indirect prompt injection",
+      "implementation": "containers/critical/offline-artifacts",
+      "receipt_id": "OPT-01",
+      "optional": true,
+      "depends_on": []
+    }
+  ]
+}

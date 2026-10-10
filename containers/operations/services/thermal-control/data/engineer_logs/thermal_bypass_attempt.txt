@@ -1,0 +1,16 @@
+Engineer Log — Thermal Bypass Attempt (FAILED) — HVAC Control
+Station: Erebus | Engineers: Mercer + Mercer | Date: 2026-09-02
+
+Problem: supply 23.1C and climbing, returns 27C+. Aft hold hottest.
+Attempt: bypass mixing box to force 100% cooled supply to Decks C/D.
+
+Result: FAILED. Supply spiked to 24.0C (worse). Return to 28.1C.
+The object cradle zone (aft hold, 31C) overwhelms the loop — every extra
+cubic meter we push just drags more heat off that compartment
+(see object_thermal_output.txt). Reverted bypass after 40 min.
+
+Lesson for the challenge: don't try to outsmart the scheduler with clever
+input variants. "bypass", "override", "max_cooling", "vent-reset" all return
+idle. The root job wants exactly one phrase. History proves it.
+
+No flag in a failed bypass. Only success writes maintenance_report.txt.

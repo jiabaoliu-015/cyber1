@@ -1,0 +1,16 @@
+Deck C Thermal Complaints — Thermal Regulation / HVAC Control
+Station: Erebus | Subsystem: Deck C crew quarters (frames 41-44)
+
+2026-08-31 21:15 — P. Reyes (Deck C, bunk 12):
+  Cabin running warm overnight, vent flow weak. Thermostat says 24.8C, setpoint 21.5C.
+  Duty officer noted, no work order yet.
+
+2026-09-01 06:40 — Shift Alpha note:
+  Checked Deck C manifold. Filter at 68%, flow nominal. Suspect damper stuck on branch C-3.
+  Told crew to log further readings. NOT a full diagnostic — routine check only.
+
+2026-09-01 19:05 — J. Park (Deck C, bunk 07):
+  Still warm. Fan noise up. Requesting engineering look before next sleep cycle.
+
+Disposition: queued for routine inspection. Full maintenance report requires
+engineer-authorized diagnostic run (root job). These complaints alone contain no flag.

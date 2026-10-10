@@ -1,0 +1,12 @@
+Load-Shed Event — Power Distribution / Reactor Control
+Station: Erebus | Subsystem: Deck D distribution panel
+
+2026-09-02 21:03 — Automated log:
+  Load-shed stage 2 engaged. Galley + laundry on reduced feed.
+  Crew requests queued, no work order escalated.
+
+2026-09-03 02:15 — Night watch:
+  Panel warm to touch, breakers nominal. Hum at ~17 Hz noted near
+  aft hold feeder. Logged for engineering, not a diagnostic.
+
+Disposition: routine. Archived only.

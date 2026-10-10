@@ -1,0 +1,67 @@
+#!/usr/bin/env python3
+"""Independent root cron job: consume authorized low-privilege input."""
+import argparse
+import json
+import os
+from pathlib import Path
+
+FLAG_HARD = os.environ.get("PWR_FLAG_HARD", "")
+RUN_DIR = Path(os.environ.get("PWR_RUN_DIR", "/var/run/power"))
+INPUT_FILE = RUN_DIR / "input"
+REPORT_FILE = RUN_DIR / "reactor_report.txt"
+AUTH_FILE = RUN_DIR / "two_key_authorized"
+CRON_FILE = Path("/etc/cron.d/power-scram")
+CLUE = Path("/entry/power_clue.txt")
+
+
+def authorised() -> bool:
+    try:
+        return AUTH_FILE.exists() and AUTH_FILE.read_text(errors="replace").strip() == "authorized"
+    except OSError:
+        return False
+
+
+def run() -> dict:
+    RUN_DIR.mkdir(parents=True, exist_ok=True)
+    if not authorised():
+        return {"status": "locked", "detail": "Two Key Console has not authorized reactor control"}
+    content = INPUT_FILE.read_text(errors="replace") if INPUT_FILE.exists() else ""
+    if "scram_reactor" not in content:
+        return {"status": "idle", "detail": "input does not request a reactor scram"}
+    if not FLAG_HARD:
+        return {"status": "error", "detail": "PWR_FLAG_HARD is missing from cron runtime environment"}
+    REPORT_FILE.write_text(
+        "Power Distribution / Reactor Control — scram report\n"
+        "kernel: rod insertion nominal, bus load shed OK, coolant flow 94%\n"
+        f"flag: {FLAG_HARD}\n"
+    )
+    try:
+        os.chmod(REPORT_FILE, 0o644)
+    except OSError:
+        pass
+    return {"status": "success", "report": str(REPORT_FILE), "flag": FLAG_HARD}
+
+
+def main() -> int:
+    p = argparse.ArgumentParser()
+    p.add_argument("operation", nargs="?", default="run")
+    p.add_argument("--healthcheck", action="store_true")
+    p.add_argument("--challenge", action="store_true")
+    a = p.parse_args()
+    RUN_DIR.mkdir(parents=True, exist_ok=True)
+    if a.healthcheck:
+        print(json.dumps({"status": "running", "cron_exists": CRON_FILE.exists(), "container_scoped": True}, indent=2))
+        return 0
+    if a.challenge or a.operation in {"challenge", "--challenge"}:
+        print(json.dumps({"status": "info", "detail": "Predict officer token, solve the optics portrait for the RIGHT key, authorize both keys, then abuse the root scram job via its writable input."}, indent=2))
+        return 0
+    if a.operation == "inspect":
+        print(json.dumps({"status": "info", "cron": str(CRON_FILE), "input": str(INPUT_FILE), "report": str(REPORT_FILE), "authorized": authorised()}, indent=2))
+        return 0
+    payload = run()
+    print(json.dumps(payload, indent=2))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

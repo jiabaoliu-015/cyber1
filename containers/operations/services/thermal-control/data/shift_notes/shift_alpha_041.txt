@@ -1,0 +1,9 @@
+Shift Handover — Alpha 041 — Thermal Regulation / HVAC Control
+Station: Erebus | Watch: 00:00-08:00 | Lead: R. Alvarez
+
+- Supply 21.5C, return 23.8C, filter 74%. Deck B/C nominal.
+- Branch C-3 damper still suspect (see crew log deck_c_complaints.txt).
+- Tried input "diagnostic_run" on the scheduler — job stayed idle.
+  (Note for next shift: the root job only reacts to one exact phrase;
+  check /api/schedule and the maintenance report workflow, don't guess.)
+- No full maintenance report generated this shift. Nothing flagged.

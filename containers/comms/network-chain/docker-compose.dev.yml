@@ -1,0 +1,17 @@
+# Dev override for rebuild-free text iteration. NOT used by the shipped lab.
+#
+#   docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
+#   # edit any text under station_terminal/rootfs/opt/station/ , then:
+#   docker-compose -f docker-compose.yml -f docker-compose.dev.yml restart station_terminal
+#
+# The station tree is bind-mounted read-only, so wording edits on the host show
+# up live on restart with no image rebuild. Usernames, passwords and the
+# hostname are baked at build time and still need a --build to change (CONTENT.md).
+services:
+  station_terminal:
+    volumes:
+      - ./station_terminal/rootfs/opt/station:/opt/station:ro
+      # login banners (dev only: the bind mount uses host perms, so the
+      # per-account 0640 lock from the image is relaxed here -- fine on your
+      # own dev box; the shipped image keeps the lock).
+      - ./station_terminal/login:/etc/erebus:ro

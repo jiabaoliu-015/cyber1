@@ -1,0 +1,128 @@
+#!/usr/bin/env bash
+# stationboot - Erebus terminal login sequence.
+#
+# Called from ~/.bashrc on INTERACTIVE login only. Structural lines (the ASCII
+# header + the connection handshake) live here; ALL narrative text is read from
+# /etc/erebus and /opt/station/notes so wording can change without touching this
+# script. See CONTENT.md.
+#
+# The sentry line + monitor line reflect ORACLE's live state, read from the
+# gate's open STATUS endpoint (the ai_blinded boolean only -- never the flag).
+
+ETC="${STATION_ETC:-/etc/erebus}"
+GATE_HOST="${GATE_HOST:-flag_gate}"
+GATE_PORT="${GATE_PORT:-9103}"
+
+# colours only on a real terminal (scripted/piped logins get plain text)
+if [ -t 1 ]; then
+  G=$'\e[92m'; A=$'\e[93m'; R=$'\e[91m'; C=$'\e[96m'; D=$'\e[90m'; B=$'\e[1m'; X=$'\e[0m'
+else
+  G=''; A=''; R=''; C=''; D=''; B=''; X=''
+fi
+
+colorize(){ sed -e "s/{g}/$G/g" -e "s/{a}/$A/g" -e "s/{r}/$R/g" \
+                -e "s/{c}/$C/g" -e "s/{d}/$D/g" -e "s/{b}/$B/g" -e "s/{x}/$X/g"; }
+rep(){ local n="$1" c="$2" o=''; while [ "$n" -gt 0 ]; do o="$o$c"; n=$((n-1)); done; printf '%s' "$o"; }
+nap(){ sleep "${1:-0.12}" 2>/dev/null; }
+bar(){ printf '[%s%s]' "$(rep "$1" '#')" "$(rep "$((20-$1))" '.')"; }
+
+# animated "label ...... resolve" line
+dots(){
+  local label="$1" res="$2" col="$3" pad i
+  pad=$(( 30 - ${#label} )); [ "$pad" -lt 2 ] && pad=2
+  printf '%b' "$label "
+  for i in $(seq 1 "$pad"); do printf '.'; nap .02; done
+  printf ' %b%s%b\n' "$col" "$res" "$X"; nap .1
+}
+
+# ORACLE (sentry) state via the gate's open STATUS -- reads ai_blinded only.
+ai_blinded(){
+  GATE_HOST="$GATE_HOST" GATE_PORT="$GATE_PORT" python3 - <<'PY' 2>/dev/null
+import socket, json, os
+try:
+    s = socket.create_connection((os.getenv("GATE_HOST"), int(os.getenv("GATE_PORT"))), timeout=1.5)
+    s.sendall(b'{"kind":"STATUS"}\n')
+    print("1" if json.loads(s.recv(4096).decode()).get("ai_blinded") else "0")
+except Exception:
+    print("0")
+PY
+}
+BLIND="$(ai_blinded)"
+
+header(){
+  printf '%b\n' "  ${C}╔══════════════════════════════════════════╗${X}"; nap .05
+  printf '%b\n' "  ${C}║${X}   ${G}${B}E R E B U S${X}   ${D}·${X}   ${B}STATION  TERMINAL${X}    ${C}║${X}"; nap .05
+  printf '%b\n' "  ${C}╚══════════════════════════════════════════╝${X}"; nap .1
+  printf '%b\n' "    ${D}flight software rev 4.2 · link control subsystem${X}"; nap .2
+  echo
+}
+
+connect(){  # $1 = user
+  dots "establishing uplink" "carrier lock" "$G"
+  dots "negotiating session key" "ok" "$G"
+  printf '%b\n' "${G}[  OK  ]${X} secure channel established ${D}· aes-256 / hmac${X}"; nap .12
+  if [ "$1" = "gh0st" ]; then
+    dots "authenticating gh0st" "key accepted · unlogged" "$A"
+  elif [ "$1" = "controlsvc" ]; then
+    dots "authenticating controlsvc" "recovery credentials accepted" "$G"
+  else
+    dots "authenticating $1" "credentials accepted" "$G"
+  fi
+  if [ "$BLIND" = "1" ]; then
+    dots "[ .... ] sentry (ORACLE)" "no signal" "$R"
+    printf '%b\n' "${R}[ FAIL ]${X} sentry (ORACLE) ............ ${R}${B}link dark${X}"; nap .1
+  else
+    dots "[ .... ] sentry (ORACLE)" "watching" "$A"
+  fi
+  printf '%b\n' "${A}[ WARN ]${X} relay.key .................. ${A}factory-default (rotation overdue)${X}"; nap .15
+}
+
+progress_ok(){  # $1 label -- fills to 100% (crew/company logins)
+  local label="$1" i
+  for i in $(seq 0 20); do printf '\r%s  %b%s%b %d%%' "$label" "$G" "$(bar "$i")" "$X" $((i*5)); nap .04; done
+  printf '\n'; nap .15
+}
+progress_fail(){  # $1 label, $2 stop%
+  local label="$1" stop="$2" end i; end=$((stop/5))
+  for i in $(seq 0 "$end"); do printf '\r%s  %b%s%b %d%%' "$label" "$A" "$(bar "$i")" "$X" $((i*5)); nap .05; done
+  nap .9
+  printf '\r%s  %b%s%b %b%bERROR%b\n' "$label" "$R" "$(bar "$end")" "$X" "$R" "$B" "$X"; nap .25
+}
+
+who="$(id -un 2>/dev/null || whoami 2>/dev/null)"
+
+header
+connect "$who"
+
+case "$who" in
+  gh0st)
+    progress_fail "decrypting access banner" 80
+    printf '%b\n' "${R}[ ERR  ]${X} banner signature mismatch"; nap .18
+    printf '%b\n' "${R}[ !!!! ]${X} unsigned handler attached @ 0x7ffd2a"; nap .2
+    for i in 1 2 3 4; do
+      printf '%b%s%b\n' "$R" "$(head -c 512 /dev/urandom | tr -dc 'A-F0-9!@#%^&*<>/|=+' | head -c 48)" "$X"; nap .06
+    done
+    echo
+    colorize < "$ETC/hijack_gh0st.txt" 2>/dev/null
+    echo
+    ;;
+  *)
+    progress_ok "decrypting access banner"
+    printf '%b\n' "${D}link latency 1.4s · relayed via landfall${X}"; nap .12
+    printf '%b\n' "${G}session ready${X}"; nap .2
+    echo
+    if [ "$BLIND" = "1" ]; then
+      MON='{r}ORACLE monitor: OFFLINE. no watch on this session.{x}'
+    else
+      MON='{a}ORACLE is watching the link.{x}'
+    fi
+    if [ "$who" = "controlsvc" ]; then
+      sed "s/{mon}/$MON/" "$ETC/banner_controlsvc.txt" 2>/dev/null | colorize
+    else
+      # crew login — personalized banner is added in the crew-banner pass;
+      # minimal immersive greeting until then.
+      printf '  {c}{b}EREBUS{x} {d}//{x} station terminal        {c}%s{x}\n  %s\n' "$who" "$MON" | colorize
+    fi
+    echo
+    ;;
+esac

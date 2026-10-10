@@ -1,0 +1,7 @@
+HVAC maintenance report — Thermal Regulation / HVAC Control (ARCHIVED — ROUTINE)
+diagnostic: ROUTINE CHECK (no root job involved)
+supply 21.5C, return 23.8C, filter 74%
+result: dampers OK, filters OK, no action. No flag issued on routine checks.
+Routine checks never carry flags.
+note: compare with live GET /api/maintenance/report after a successful run.
+Format matches, content does not — that is intentional.

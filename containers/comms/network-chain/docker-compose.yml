@@ -1,0 +1,76 @@
+# Erebus network chain — self-contained stack.
+# One private L2 segment (station_lan). The player logs into the station
+# terminal (ssh erebus, port 2222) as controlsvc or gh0st and performs the ARP
+# interception against the segment.
+#
+#   station_terminal ── station_lan ── beacon_relay ─► landfall_link  (ground, no auth)
+#    (erebus)                         │              └► sentry_watcher (AI, freshness+MAC)
+#                                     └► event_svc (session source)  · flag_gate (scoring)
+#
+# NOTE: station_terminal carries NET_ADMIN so the standard ARP tooling works
+# from inside the container. NET_RAW is on by default in Docker.
+
+services:
+  flag_gate:
+    build: { context: ., dockerfile: flag_gate/Dockerfile }
+    environment:
+      - GATE_PORT=9103
+      - MID_FLAG=${MID_FLAG:-CTF{PLACEHOLDER_cant_see_me}}
+      - GATE_TOKEN=${GATE_TOKEN:-gate-internal-default}
+    networks: [station_lan]
+
+  event_svc:
+    build: { context: ., dockerfile: event_svc/Dockerfile }
+    environment: [ EVENT_PORT=9100 ]
+    networks: [station_lan]
+
+  landfall_link:
+    build: { context: ., dockerfile: landfall_link/Dockerfile }
+    environment:
+      - LANDFALL_PORT=9101
+      - GATE_HOST=flag_gate
+      - GATE_PORT=9103
+      - GATE_TOKEN=${GATE_TOKEN:-gate-internal-default}
+    depends_on: [flag_gate]
+    networks: [station_lan]
+
+  sentry_watcher:
+    build: { context: ., dockerfile: sentry_watcher/Dockerfile }
+    environment:
+      - SENTRY_PORT=9102
+      - RELAY_KEY=${RELAY_KEY:-RELAY-FACTORY-DEFAULT}
+      - GATE_HOST=flag_gate
+      - GATE_PORT=9103
+      - GATE_TOKEN=${GATE_TOKEN:-gate-internal-default}
+    depends_on: [flag_gate]
+    networks: [station_lan]
+
+  beacon_relay:
+    build: { context: ., dockerfile: beacon_relay/Dockerfile }
+    environment:
+      - LANDFALL_HOST=landfall_link
+      - SENTRY_HOST=sentry_watcher
+      - EVENT_HOST=event_svc
+      - GATE_HOST=flag_gate
+      - GATE_TOKEN=${GATE_TOKEN:-gate-internal-default}
+      - BEACON_INTERVAL=${BEACON_INTERVAL:-5}
+      - RELAY_KEY=${RELAY_KEY:-RELAY-FACTORY-DEFAULT}
+      - EASY_FLAG=${EASY_FLAG:-CTF{PLACEHOLDER_wire_capture}}
+    depends_on: [landfall_link, sentry_watcher, event_svc, flag_gate]
+    networks: [station_lan]
+
+  station_terminal:
+    build: { context: ., dockerfile: station_terminal/Dockerfile }
+    hostname: erebus
+    cap_add: [ NET_ADMIN, NET_RAW ]
+    # transparent MITM: forwarding on so ARP-poisoned traffic still reaches its
+    # destination while the player captures it (the player can't set this as an
+    # unprivileged user, so it's enabled at the container level here).
+    sysctls: [ "net.ipv4.ip_forward=1" ]
+    ports: [ "2222:22" ]
+    depends_on: [beacon_relay]
+    networks: [station_lan]
+
+networks:
+  station_lan:
+    driver: bridge

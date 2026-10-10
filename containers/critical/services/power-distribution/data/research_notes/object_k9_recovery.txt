@@ -1,0 +1,18 @@
+Research Note — Object K-9 Recovery — Station Erebus
+Date: 2026-08-27 | Authors: EVA team (Becker, Mercer) + Researcher Wu Yan
+
+During hull survey at frame 88 aft, recovered a basalt-like mass ~40cm,
+pitted, faintly warm to the glove despite -40C ambient. No transponder,
+no alloy match. Brought inside per science protocol, cradled in aft hold
+(service shaft D-4 adjacent, near HVAC return trunk — in hindsight, poor placement).
+
+Initial readings: 12C in airlock, 19C after 6h, 28C after 24h, now 38C and
+still climbing slowly (see object_thermal_output.txt). No power source found.
+Condensation beads on nearby ducts in patterns crew keep photographing —
+Becker has filled a notebook with them.
+
+Handling: gloves + buddy system. Do NOT sleep near it. Do NOT lick it
+(yes, this had to be written down after the condensate incident).
+Research continues; HVAC impact is now the priority.
+
+No flag in the rock. It is hot, strange, and flagless.

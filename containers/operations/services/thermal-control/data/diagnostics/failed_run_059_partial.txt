@@ -1,0 +1,7 @@
+Failed Scram Run 059 (partial) — Power Distribution / Reactor Control
+input contained: scram_reactor
+result: locked — Two Key Console has not authorized reactor control
+Power Distribution / Reactor Control — scram report
+kernel: rod insertion nominal, bus load shed OK, coolant flow 94%
+Note: archived failure. Correct word, missing authorization.
+Authorize both Captain Keys first.

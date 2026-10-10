@@ -1,0 +1,13 @@
+services:
+  shift_scheduler:
+    build:
+      context: ..
+      dockerfile: compose/Dockerfile_shift_scheduler
+    environment:
+      SERVICE_NAME: shift_scheduler
+      ROOT_FLAG: CITS3006_ROOT_FLAG
+    healthcheck:
+      test: ["CMD", "bash", "-c", "/opt/shift_scheduler/process_job --healthcheck"]
+      interval: 5s
+      timeout: 10s
+      retries: 3

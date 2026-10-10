@@ -1,0 +1,20 @@
+Research Note — Object Thermal Output vs Station Temps — Station Erebus
+Date: 2026-09-02 | Author: Researcher Wu Yan | Linked: Thermal Regulation
+
+Correlation is now undeniable:
+
+  Object surface: 12C (08-27) -> 28C (08-28) -> 34C (08-31) -> 38.2C (09-02)
+  Aft hold air:   21C -> 24C -> 28C -> 31.1C
+  Station return:    23.8C -> 24.1C -> 27.6C -> 28.3C
+  Station supply:    21.5C -> 21.5C -> 23.1C -> 23.6C (setpoint lost)
+
+The object leads, the station follows by ~12-18h. Every degree the cradle gains,
+the HVAC return gains ~0.6 degrees half a day later. The plant was sized for
+people and machines, not a slow 38C heater plumbed into the return trunk.
+
+Effect on crew: heat rash, insomnia, headaches (see sickbay_heat_cases.txt),
+plus the low hum (see acoustic_hum_analysis.txt). Becker is the most affected
+because he spends the most time near it. Distance helps — Deck A sleeps better
+than Deck D. Nobody is possessed; everybody is overheated and underslept.
+
+No flag in this correlation. Cool the loop, don't cuddle the object.

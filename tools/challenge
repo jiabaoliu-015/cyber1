@@ -1,0 +1,89 @@
+#!/usr/bin/env python3
+"""Challenge catalogue command for the storyless CITS3006 lab layout."""
+from __future__ import annotations
+
+import argparse
+import json
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+MANIFEST = ROOT / "challenges" / "manifest.json"
+
+
+def load() -> dict:
+    return json.loads(MANIFEST.read_text())
+
+
+def required(entries: list[dict]) -> list[dict]:
+    return [entry for entry in entries if not entry.get("optional", False)]
+
+
+def find(data: dict, challenge_id: str) -> dict:
+    for entry in data["challenges"]:
+        if entry["id"] == challenge_id.upper():
+            return entry
+    raise SystemExit(f"Unknown challenge ID: {challenge_id}")
+
+
+def list_challenges(data: dict) -> None:
+    groups = ("web", "network", "privilege-escalation", "offline-artefacts")
+    labels = {
+        "web": "Web Lab",
+        "network": "Network Lab",
+        "privilege-escalation": "Privilege Escalation Lab",
+        "offline-artefacts": "Offline Artefact Lab",
+    }
+    for lab in groups:
+        print(labels[lab])
+        for entry in (e for e in data["challenges"] if e["lab"] == lab):
+            suffix = " (optional)" if entry.get("optional") else ""
+            print(f"  {entry['id']}: {entry['title']} — {entry['vulnerability']}{suffix}")
+        print()
+    print("Completion: COMPLETE-01 — Evidence completion check")
+
+
+def show(entry: dict) -> None:
+    print(f"ID: {entry['id']}")
+    print(f"Lab: {entry['lab']}")
+    print(f"Title: {entry['title']}")
+    print(f"Vulnerability: {entry['vulnerability']}")
+    print(f"Implementation: {entry['implementation']}")
+    print(f"Receipt ID: {entry['receipt_id']}")
+    print("Dependencies: " + (", ".join(entry["depends_on"]) or "none"))
+
+
+def validate(data: dict) -> None:
+    entries = data["challenges"]
+    core = required(entries)
+    expected = {"network": 3, "web": 6, "privilege-escalation": 3, "offline-artefacts": 5}
+    actual = {lab: sum(e["lab"] == lab for e in core) for lab in expected}
+    ids = [e["id"] for e in core]
+    receipts = [e["receipt_id"] for e in core]
+    assert len(core) == 17, f"expected 17 required challenges, found {len(core)}"
+    assert actual == expected, f"unexpected lab counts: {actual}"
+    assert len(ids) == len(set(ids)), "required challenge IDs are not unique"
+    assert len(receipts) == len(set(receipts)), "required receipt IDs are not unique"
+    assert all(not entry["depends_on"] for entry in core), "required challenges must be independently completable"
+    print("Challenge catalogue validation: PASS (17 required, 1 optional, 4 labs, independent routes)")
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Inspect the CITS3006 storyless challenge catalogue.")
+    sub = parser.add_subparsers(dest="command", required=True)
+    sub.add_parser("list", help="list four labs and their challenges")
+    p_show = sub.add_parser("show", help="show one challenge")
+    p_show.add_argument("challenge_id")
+    sub.add_parser("validate", help="validate inventory and independence rules")
+    args = parser.parse_args()
+    data = load()
+    if args.command == "list":
+        list_challenges(data)
+    elif args.command == "show":
+        show(find(data, args.challenge_id))
+    else:
+        validate(data)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

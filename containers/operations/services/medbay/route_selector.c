@@ -1,0 +1,38 @@
+/* RE-03: trace the live route through the medbay audit selector. */
+#include <stdio.h>
+#include <string.h>
+
+#define N 23
+
+static unsigned char route(void) {
+    unsigned char state = 0x6D;
+    const unsigned char steps[] = {0x31, 0xA4, 0x07, 0xD2};
+    for (unsigned int i = 0; i < 4; ++i) {
+        state = (unsigned char)((state ^ steps[i]) + (i * 19));
+    }
+    return (unsigned char)(state % 3);
+}
+
+int main(int argc, char **argv) {
+    /* Three XOR-masked audit references. Only one is selected by route(). */
+    static const unsigned char records[3][N] = {
+        {0x17,0x1f,0x1e,0x77,0x6d,0x1c,0x68,0x19,0x77,0x63,0x18,0x62,0x6b,0x77,0x69,0x6e,0x6b,0x6a,0x77,0x1b,0x6f,0x1c,0x68},
+        {0x17,0x1f,0x1e,0x77,0x63,0x1b,0x6b,0x1e,0x77,0x6c,0x6d,0x1f,0x1c,0x77,0x6a,0x62,0x68,0x18,0x77,0x19,0x69,0x63,0x6a},
+        {0x17,0x1f,0x1e,0x77,0x6e,0x19,0x6c,0x6d,0x77,0x1e,0x6b,0x69,0x1f,0x77,0x6f,0x1b,0x68,0x6a,0x77,0x18,0x62,0x1c,0x6b}
+    };
+    char chosen[N + 1];
+    if (argc != 3 || strcmp(argv[1], "--verify") != 0) {
+        puts("Usage: artifact3_binary --verify <audit-reference>");
+        return 2;
+    }
+    for (unsigned int i = 0; i < N; ++i) {
+        chosen[i] = (char)(records[route()][i] ^ 0x5A);
+    }
+    chosen[N] = '\0';
+    if (strcmp(argv[2], chosen) != 0) {
+        puts("Decoy route: this reference does not reach the live audit handoff.");
+        return 1;
+    }
+    puts("Authentic execution path confirmed. THREAD_03 is valid.");
+    return 0;
+}

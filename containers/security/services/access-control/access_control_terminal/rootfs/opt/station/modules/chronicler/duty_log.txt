@@ -1,0 +1,27 @@
+LAB EQUIPMENT - duty log                (personal, not for distribution)
+
+putting this here instead of the shared ticket queue because the shared queue
+is apparently public reading material now, and i have opinions i'd like to
+keep off the record.
+
+opinion the first: /opt/station/modules/research_lab/toolbox should not exist. it exists so any
+researcher can drop a "quick diagnostic plugin" in without filing a change
+request, which sounded reasonable in the planning meeting and sounds
+considerably less reasonable now that i've actually looked at what
+run-diagnostics.sh does with it.
+
+it puts toolbox first on PATH. first. before the actual tools. then it calls
+sensor-status by name and just... trusts whatever answers. and it runs as
+labctl, not as whoever kicked it off, because god forbid a researcher wait for
+the real equipment account to free up.
+
+so if you're reading this wondering why your "one-off sensor check" plugin
+suddenly has labctl's file permissions: congratulations, you found the
+"feature." i raised it. i was told it's "self-service by design." it is
+self-service the way leaving your car running with the keys in it is
+self-service.
+
+logactivity.log will show exactly what ran and as whom, timestamped, every
+time. that part at least works.
+
+- duty log, entry unsigned on purpose

@@ -1,0 +1,9 @@
+FROM python:3.11-slim
+WORKDIR /opt/shift_scheduler
+COPY implementation/scheduled_job.py /opt/shift_scheduler/process_job
+COPY entry/scheduled_job_clue.txt /entry/scheduled_job_clue.txt
+COPY entry/post_root_handoff.txt /entry/post_root_handoff.txt
+RUN chmod 755 /opt/shift_scheduler/process_job && mkdir -p /var/run/shift_scheduler /etc/cron.d
+ENV PYTHONUNBUFFERED=1 ROOT_FLAG=CITS3006_ROOT_FLAG
+HEALTHCHECK --interval=5s --timeout=10s --retries=3 CMD ["/opt/shift_scheduler/process_job", "--healthcheck"]
+CMD ["sh", "-c", "/opt/shift_scheduler/process_job --healthcheck >/dev/null && exec tail -f /dev/null"]

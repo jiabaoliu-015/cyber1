@@ -1,0 +1,13 @@
+Reactor Bus Sag — Power Distribution / Reactor Control
+Station: Erebus | Subsystem: Main bus A/B (frames 52-55)
+
+2026-09-02 08:12 — Watch report:
+  Bus load 61%, load-shed active on decks C/D. Lighting flicker in
+  crew quarters. Reactor output nominal; distribution sagging downstream.
+  Thermostat complaints rising as HVAC compensates.
+
+2026-09-02 19:40 — Shift Beta note:
+  Sag follows the evening cycle. No scram ordered. Routine monitoring only.
+
+Disposition: monitor. Full scram report requires Two Key Console
+authorization plus the root scram job. This note contains no flag.

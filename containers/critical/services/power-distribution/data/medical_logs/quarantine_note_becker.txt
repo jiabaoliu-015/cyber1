@@ -1,0 +1,20 @@
+Sickbay Quarantine Note — J. Becker — Station Erebus
+Date: 2026-09-02 | Medical Officer: Dr. Y. Nassar | Status: OBSERVATION (declined admission)
+
+Becker presented sweating, restless, notebook clutched to chest. Vital signs
+stable except mild dehydration. Conversation loops back to the object:
+
+  "It was cold out there on the hull, minus 40, frost on my gloves. Now it
+   sits in the aft hold at 38 and the ducts sweat. You feel it at night,
+   right? The hum under the fan noise? It counts with your teeth. It tastes
+   the air we breathe out and breathes hot back in. I drew what it dreams."
+
+Exam: oriented x3 but tangential. No psych history on file. Denies hearing
+voices "exactly" — says it is "more like the station humming a note and my
+teeth humming back." Declined overnight stay, agreed to buddy system and
+no solo duct runs. Security notified re aft hold.
+
+Plan: recheck in 12h. If worsens, mandatory rest. The object stays put
+per command (see containment_request_denied.txt) so we manage heat, not cause.
+
+No flag in sickbay. Do not grep medical notes for flags — run the diagnostic.

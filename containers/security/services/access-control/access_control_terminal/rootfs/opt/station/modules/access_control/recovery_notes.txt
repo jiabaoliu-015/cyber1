@@ -1,0 +1,28 @@
+RECOVERY OPS - zonectl sync                (internal memo, not for crew)
+
+for whoever picks up recovery duty next: `zonectl sync --sync-as <you>` is
+there so a reclaimed account can rebuild its own badge cache without waiting
+on acctld's nightly job. that's it. that's the whole feature. do not let
+anyone tell you it does more than that.
+
+it does do more than that, is the problem. i added a `--shell` flag during
+setup so i could confirm the resync actually landed without SSHing in twice —
+was going to strip it before handoff, then the incident happened and "strip
+the debug flag from a maintenance tool" fell off everyone's list, mine
+included.
+
+worse: sync never checks that `<you>` is, you know, you. it'll happily sync
+"as" any account that exists on the box. i wrote myself a ticket to add a
+target allowlist before this went anywhere near production. never got to it.
+station's not production anymore in the way that ticket assumed, so. here we
+are.
+
+the sudoers rule that lets recovery accounts run zonectl at all is
+`/etc/sudoers.d/90-recovery-access` if anyone wants to audit it. i'd start
+there before you start blaming acctld itself — the daemon's fine, the CLI in
+front of it isn't.
+
+if the y.wu (researcher) account looks touched and nobody remembers touching it,
+this is why.
+
+- recovery ops

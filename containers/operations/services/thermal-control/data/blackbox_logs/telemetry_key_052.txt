@@ -1,0 +1,8 @@
+Blackbox Telemetry — Optics side-channel (frames 52-53)
+2026-09-02 — Automated capture:
+  Bus ripple sampled at keypad entry: peaks align with asset-tag
+  checkouts. Calibrated tag for this hull: BECK-4217-K9.
+  Operators: use this tag as the trailer XOR key for the optics
+  portrait (marker PWR-BLACKBOX-V1:). Solver: docs/solutions/solve_image.py.
+Note: portrait pixels are unmodified; payload is appended after EOI.
+Note: this log holds the key, not the flag

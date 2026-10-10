@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# sensor-status — the REAL station environmental sensor self-test.
+# Lives in /opt/station/modules/research_lab/bin (trusted), deliberately NOT
+# in /opt/station/modules/research_lab/toolbox.
+# Prints a plausible, boring reading. Does not touch anything privileged.
+echo "sensor-status: O2 21.0% | CO2 410ppm | temp 21.4C | pressure nominal"
+if [[ "${1:-}" == "--full" ]]; then
+    echo "sensor-status: full self-test PASS (all channels nominal)"
+fi

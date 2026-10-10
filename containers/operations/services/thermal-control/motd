@@ -1,0 +1,10 @@
+Station EREBUS — Thermal Regulation / HVAC Control
+SSH entry only. Web API is localhost-only; use the `hvac` CLI.
+
+  ssh default@localhost -p 2223   # password: HVAC-1001-STAT
+  hvac me                         # default token
+  hvac status                     # 403 as default — predict engineer (uid 1002)
+  su engineer                     # password: HVAC-1002-STAT (HVAC-UID-STAT)
+  hvac schedule | hvac logs
+
+Flag is a per-build runtime secret (see flags/init_flags.sh) — not in source.

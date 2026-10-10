@@ -1,0 +1,14 @@
+Mess Hall Temperature Requests — Thermal Regulation / HVAC Control
+Station: Erebus | Zone: Mess hall + galley (Deck B)
+
+2026-08-30 12:20 — Galley crew:
+  Galley return air 25.3C during meal prep. Request supply boost 12:00-13:30 daily.
+  Filter load rising fast (cooking particulates).
+
+2026-08-31 12:05 — Crew petition (14 signatures):
+  Mess hall too warm at lunch. Asking for 21.0C setpoint during meals.
+
+2026-09-01 08:00 — Engineering response (H. Mercer):
+  Denied setpoint change — would starve Deck C branch. Scheduled filter wipe
+  instead. See engineer log: filter_replacement.txt. No diagnostic flag here;
+  meal-time temps are expected to read high.

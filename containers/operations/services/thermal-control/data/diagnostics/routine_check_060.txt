@@ -1,0 +1,4 @@
+Routine Check 060 — Power Distribution / Reactor Control
+input contained: (empty — status poll only)
+result: idle — input does not request a reactor scram
+supply 61%, coolant 94%, filter 82%. No scram ordered.

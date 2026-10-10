@@ -1,0 +1,6 @@
+HVAC maintenance report — Thermal Regulation / HVAC Control (ARCHIVED — FAILED)
+diagnostic: FAILED (aborted: input "diagnostic_run" did not request a diagnostic run)
+supply 21.6C, return 24.0C, filter 78%
+Job status was idle. No report generated.
+note: root job /opt/hvac/process_job only reacts to the exact trigger phrase.
+See /api/maintenance/history for the list of failed attempts.

@@ -1,0 +1,11 @@
+{d}============================================================{x}
+ {g}{b}EREBUS{x}  {d}//{x}  control services terminal        {c}controlsvc{x}
+{d}------------------------------------------------------------{x}
+ automated control agent. access reassigned to company recovery.
+ {mon}
+{d}------------------------------------------------------------{x}
+ {d}objective :{x} assess station and crew status; investigate why
+             ground control has lost contact.
+ {d}start     :{x} {c}cd /opt/station/modules{x}   (subsystem map)
+             {c}linkstat{x}                   (link visibility)
+{d}============================================================{x}

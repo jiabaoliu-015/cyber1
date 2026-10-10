@@ -1,0 +1,16 @@
+EREBUS // access chain subsystem map
+=====================================
+
+  access_control/   badge/zone daemon (acctld) — operator CLI: zonectl
+  chronicler/       station log/analysis journal — researcher-tier access
+  _legacy/          decommissioned — not live
+
+Tools:  zonectl status [user]
+        zonectl grant <user> <zone>
+        zonectl sync --sync-as <user> [--shell]     (recovery-only, see notes)
+
+Logs:   /opt/station/modules/access_control/logs/zone_audit.log   (every zonectl invocation)
+        /opt/station/modules/research_lab/logs/logactivity.log     (lab equipment diagnostics)
+
+This chain assumes the same station foothold as the network chain: land on
+`gh0st` (backdoor) or `controlsvc` (company-reclaimed), from /home there.

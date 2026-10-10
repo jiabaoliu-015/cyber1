@@ -1,0 +1,14 @@
+Sickbay Advisory — Sleep Deprivation in Heat — Station Erebus
+Date: 2026-09-02 | From: Dr. Y. Nassar to all section leads
+
+Crew are getting 3-5h broken sleep in 26-28C cabins. Effects we are seeing:
+irritability, mistakes (wrong scheduler phrases, missed check-ins),
+paranoia about noises, and in one case (Becker) frank fixation on the hum
+and the aft-hold object. Heat makes everything worse. The strange behavior
+is downstream of temperature — fix the air and the strangeness should fade.
+
+Orders: rotate heat-exposed crew, enforce water + rest, no solo confined-space
+work. Anyone found sleeping in ducts (it happened) gets walked to sickbay,
+not disciplined. We are all too hot to think straight.
+
+No flag in this advisory. Cool the station first.

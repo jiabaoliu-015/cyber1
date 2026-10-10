@@ -1,0 +1,30 @@
+LINK SUBSYSTEM - troubleshooting  (STOP ASKING ME)
+
+right. i am writing this ONCE so the next person who comms me at 0300 about
+"ground's dropped again" can read it themselves and leave me alone.
+
+how it actually works, since nobody reads the manual: the relay (comms_relay)
+does the talking. every few seconds it wraps a status frame and fires it at TWO
+places:
+  - down to ground through the ground_link receiver (landfall). yes, that's the
+    one command stares at.
+  - across to the sentry, so the AI stops nagging that we're dead.
+the numbers in the frame come from the event log. it's not magic.
+
+when ground "looks stuck" (it's ALWAYS this):
+  1. reboot the relay. that's the fix 9 times out of 10. it re-reads its config
+     on the way up.
+  2. still showing an old status? that's ground_link being lazy. it only keeps
+     the "last status seen" and won't budge until it accepts a new frame. not my
+     system, not my problem.
+  3. sentry throwing a fit? that's the fussy one, picky about what it accepts.
+     go poke the relay's signing config, not me.
+
+and before someone "helpfully" packet-dumps the whole segment again: yes it's
+all in the clear in here, that's normal for a closed net, no it is not a crisis,
+put wireshark down.
+
+if this note does not answer your question, the answer is still "reboot the
+relay." i am at lunch.
+
+- maint.  do NOT comm me.

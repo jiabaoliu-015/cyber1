@@ -1,0 +1,16 @@
+Family Deck Overheat — Thermal Regulation / HVAC Control
+Station: Erebus | Zone: Family berths, Deck C aft | Date: 2026-09-02
+
+2026-09-02 10:15 — L. Osei (family berth C-A09, two children):
+  Cabin 26.8C by 1000. Kids flushed, nosebleeds starting. Cold towels help
+  for 20 min then back to sweating. Please, someone fix the air.
+
+2026-09-02 11:00 — Creche supervisor:
+  Playroom 27.0C. Cancelled afternoon session, moved children to mess hall
+  (slightly cooler at 26.2C). Parents taking turns fanning infants.
+
+2026-09-02 14:30 — Duty engineer note:
+  Moved one portable cooler to creche as stopgap. Main system still
+  over-temp. Full root diagnostic needed — portable units can't hold the station.
+
+No flag in family berths. Just hot kids and worried parents.

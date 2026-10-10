@@ -1,0 +1,7 @@
+tests/
+scripts/
+README.md
+.gitignore
+*.pyc
+__pycache__/
+artifact3_binary

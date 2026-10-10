@@ -1,0 +1,4 @@
+Uplink Relay — Comms (frames 52-53)
+2026-09-02 — Relay op:
+  Ground asked for reactor status during load-shed. Replied with
+  public bus numbers only. No flag traffic on this channel.

@@ -1,0 +1,342 @@
+{
+  "integration_test_run": {
+    "timestamp": "2026-09-18T19:06:02.869000",
+    "total_tests": 49,
+    "passed_tests": 49
+  },
+  "all_test_results": [
+    {
+      "route": "FANG",
+      "test_name": "HealthcheckScript",
+      "status": "PASS",
+      "details": "\u2713 Exists - /home/kali/Desktop/CITS3006-Project/labs/privilege-escalation-lab/routes/scripts/healthcheck_suid_route.sh",
+      "timestamp": "2026-09-18T19:06:02.661931"
+    },
+    {
+      "route": "MOLT",
+      "test_name": "HealthcheckScript",
+      "status": "PASS",
+      "details": "\u2713 Exists - /home/kali/Desktop/CITS3006-Project/labs/privilege-escalation-lab/routes/scripts/healthcheck_scheduled_job.sh",
+      "timestamp": "2026-09-18T19:06:02.729219"
+    },
+    {
+      "route": "MOLT",
+      "test_name": "ResetScript",
+      "status": "PASS",
+      "details": "\u2713 Exists - /home/kali/Desktop/CITS3006-Project/labs/privilege-escalation-lab/routes/scripts/reset_scheduled_job.sh",
+      "timestamp": "2026-09-18T19:06:02.729244"
+    },
+    {
+      "route": "BLACK_WIDOW",
+      "test_name": "HealthcheckScript",
+      "status": "PASS",
+      "details": "\u2713 Exists - /home/kali/Desktop/CITS3006-Project/labs/privilege-escalation-lab/routes/scripts/healthcheck_local_root_service.sh",
+      "timestamp": "2026-09-18T19:06:02.796803"
+    },
+    {
+      "route": "BLACK_WIDOW",
+      "test_name": "ResetScript",
+      "status": "PASS",
+      "details": "\u2713 Exists - /home/kali/Desktop/CITS3006-Project/labs/privilege-escalation-lab/routes/scripts/reset_local_root_service.sh",
+      "timestamp": "2026-09-18T19:06:02.796809"
+    },
+    {
+      "route": "CrossRoute",
+      "test_name": "FANG-NoMOLTRef",
+      "status": "PASS",
+      "details": "MOLT references: 1",
+      "timestamp": "2026-09-18T19:06:02.796985"
+    },
+    {
+      "route": "CrossRoute",
+      "test_name": "MOLT-NoFANGRef",
+      "status": "PASS",
+      "details": "FANG references: 0",
+      "timestamp": "2026-09-18T19:06:02.797033"
+    },
+    {
+      "route": "CrossRoute",
+      "test_name": "BW-NoFANGRef",
+      "status": "PASS",
+      "details": "FANG references: 0",
+      "timestamp": "2026-09-18T19:06:02.797085"
+    },
+    {
+      "route": "CrossRoute",
+      "test_name": "BW-NoMOLTRef",
+      "status": "PASS",
+      "details": "MOLT references: 0",
+      "timestamp": "2026-09-18T19:06:02.797113"
+    },
+    {
+      "route": "FANG",
+      "test_name": "RootFlagConsistent",
+      "status": "PASS",
+      "details": "Flag in content: /home/kali/Desktop/CITS3006-Project/labs/privilege-escalation-lab/routes/implementation/suid_route.py",
+      "timestamp": "2026-09-18T19:06:02.826140"
+    },
+    {
+      "route": "MOLT",
+      "test_name": "RootFlagConsistent",
+      "status": "PASS",
+      "details": "Flag in content: /home/kali/Desktop/CITS3006-Project/labs/privilege-escalation-lab/routes/implementation/scheduled_job.py",
+      "timestamp": "2026-09-18T19:06:02.852378"
+    },
+    {
+      "route": "BLACK_WIDOW",
+      "test_name": "RootFlagConsistent",
+      "status": "PASS",
+      "details": "Flag in content: /home/kali/Desktop/CITS3006-Project/labs/privilege-escalation-lab/routes/implementation/service.py",
+      "timestamp": "2026-09-18T19:06:02.868805"
+    },
+    {
+      "route": "FANG",
+      "test_name": "FileStructure_suid_route.py",
+      "status": "PASS",
+      "details": "\u2713 Exists",
+      "timestamp": "2026-09-18T19:06:02.868840"
+    },
+    {
+      "route": "FANG",
+      "test_name": "FileStructure_suid_route_clue.txt",
+      "status": "PASS",
+      "details": "\u2713 Exists",
+      "timestamp": "2026-09-18T19:06:02.868845"
+    },
+    {
+      "route": "MOLT",
+      "test_name": "FileStructure_scheduled_job.py",
+      "status": "PASS",
+      "details": "\u2713 Exists",
+      "timestamp": "2026-09-18T19:06:02.868848"
+    },
+    {
+      "route": "MOLT",
+      "test_name": "FileStructure_scheduled_job_clue.txt",
+      "status": "PASS",
+      "details": "\u2713 Exists",
+      "timestamp": "2026-09-18T19:06:02.868852"
+    },
+    {
+      "route": "MOLT",
+      "test_name": "FileStructure_reset_scheduled_job.sh",
+      "status": "PASS",
+      "details": "\u2713 Exists",
+      "timestamp": "2026-09-18T19:06:02.868855"
+    },
+    {
+      "route": "MOLT",
+      "test_name": "FileStructure_healthcheck_scheduled_job.sh",
+      "status": "PASS",
+      "details": "\u2713 Exists",
+      "timestamp": "2026-09-18T19:06:02.868858"
+    },
+    {
+      "route": "BLACK_WIDOW",
+      "test_name": "FileStructure_service.py",
+      "status": "PASS",
+      "details": "\u2713 Exists",
+      "timestamp": "2026-09-18T19:06:02.868860"
+    },
+    {
+      "route": "BLACK_WIDOW",
+      "test_name": "FileStructure_local_root_service_clue.txt",
+      "status": "PASS",
+      "details": "\u2713 Exists",
+      "timestamp": "2026-09-18T19:06:02.868863"
+    },
+    {
+      "route": "BLACK_WIDOW",
+      "test_name": "FileStructure_reset_local_root_service.sh",
+      "status": "PASS",
+      "details": "\u2713 Exists",
+      "timestamp": "2026-09-18T19:06:02.868866"
+    },
+    {
+      "route": "BLACK_WIDOW",
+      "test_name": "FileStructure_healthcheck_local_root_service.sh",
+      "status": "PASS",
+      "details": "\u2713 Exists",
+      "timestamp": "2026-09-18T19:06:02.868869"
+    },
+    {
+      "route": "FANG",
+      "test_name": "FileExists",
+      "status": "PASS",
+      "details": "\u2713 passed"
+    },
+    {
+      "route": "FANG",
+      "test_name": "ClueFile",
+      "status": "PASS",
+      "details": "\u2713 passed"
+    },
+    {
+      "route": "FANG",
+      "test_name": "RootFlag",
+      "status": "PASS",
+      "details": "\u2713 passed"
+    },
+    {
+      "route": "MOLT",
+      "test_name": "FileExists",
+      "status": "PASS",
+      "details": "\u2713 passed"
+    },
+    {
+      "route": "MOLT",
+      "test_name": "ClueFile",
+      "status": "PASS",
+      "details": "\u2713 passed"
+    },
+    {
+      "route": "MOLT",
+      "test_name": "RootFlag",
+      "status": "PASS",
+      "details": "\u2713 passed"
+    },
+    {
+      "route": "BLACK_WIDOW",
+      "test_name": "FileExists",
+      "status": "PASS",
+      "details": "\u2713 passed"
+    },
+    {
+      "route": "BLACK_WIDOW",
+      "test_name": "ClueFile",
+      "status": "PASS",
+      "details": "\u2713 passed"
+    },
+    {
+      "route": "BLACK_WIDOW",
+      "test_name": "RootFlag",
+      "status": "PASS",
+      "details": "\u2713 passed"
+    },
+    {
+      "route": "BLACK_WIDOW",
+      "test_name": "LocalInterface",
+      "status": "PASS",
+      "details": "\u2713 passed"
+    },
+    {
+      "route": "CrossRoute",
+      "test_name": "FANG-NoMOLTRef",
+      "status": "PASS",
+      "details": "MOLT references: 1",
+      "timestamp": "2026-09-18T19:06:02.796985"
+    },
+    {
+      "route": "CrossRoute",
+      "test_name": "MOLT-NoFANGRef",
+      "status": "PASS",
+      "details": "FANG references: 0",
+      "timestamp": "2026-09-18T19:06:02.797033"
+    },
+    {
+      "route": "CrossRoute",
+      "test_name": "BW-NoFANGRef",
+      "status": "PASS",
+      "details": "FANG references: 0",
+      "timestamp": "2026-09-18T19:06:02.797085"
+    },
+    {
+      "route": "CrossRoute",
+      "test_name": "BW-NoMOLTRef",
+      "status": "PASS",
+      "details": "MOLT references: 0",
+      "timestamp": "2026-09-18T19:06:02.797113"
+    },
+    {
+      "route": "FANG",
+      "test_name": "RootFlagConsistent",
+      "status": "PASS",
+      "details": "Flag in content: /home/kali/Desktop/CITS3006-Project/labs/privilege-escalation-lab/routes/implementation/suid_route.py",
+      "timestamp": "2026-09-18T19:06:02.826140"
+    },
+    {
+      "route": "MOLT",
+      "test_name": "RootFlagConsistent",
+      "status": "PASS",
+      "details": "Flag in content: /home/kali/Desktop/CITS3006-Project/labs/privilege-escalation-lab/routes/implementation/scheduled_job.py",
+      "timestamp": "2026-09-18T19:06:02.852378"
+    },
+    {
+      "route": "BLACK_WIDOW",
+      "test_name": "RootFlagConsistent",
+      "status": "PASS",
+      "details": "Flag in content: /home/kali/Desktop/CITS3006-Project/labs/privilege-escalation-lab/routes/implementation/service.py",
+      "timestamp": "2026-09-18T19:06:02.868805"
+    },
+    {
+      "route": "FANG",
+      "test_name": "FileStructure_suid_route.py",
+      "status": "PASS",
+      "details": "\u2713 Exists",
+      "timestamp": "2026-09-18T19:06:02.868840"
+    },
+    {
+      "route": "FANG",
+      "test_name": "FileStructure_suid_route_clue.txt",
+      "status": "PASS",
+      "details": "\u2713 Exists",
+      "timestamp": "2026-09-18T19:06:02.868845"
+    },
+    {
+      "route": "MOLT",
+      "test_name": "FileStructure_scheduled_job.py",
+      "status": "PASS",
+      "details": "\u2713 Exists",
+      "timestamp": "2026-09-18T19:06:02.868848"
+    },
+    {
+      "route": "MOLT",
+      "test_name": "FileStructure_scheduled_job_clue.txt",
+      "status": "PASS",
+      "details": "\u2713 Exists",
+      "timestamp": "2026-09-18T19:06:02.868852"
+    },
+    {
+      "route": "MOLT",
+      "test_name": "FileStructure_reset_scheduled_job.sh",
+      "status": "PASS",
+      "details": "\u2713 Exists",
+      "timestamp": "2026-09-18T19:06:02.868855"
+    },
+    {
+      "route": "MOLT",
+      "test_name": "FileStructure_healthcheck_scheduled_job.sh",
+      "status": "PASS",
+      "details": "\u2713 Exists",
+      "timestamp": "2026-09-18T19:06:02.868858"
+    },
+    {
+      "route": "BLACK_WIDOW",
+      "test_name": "FileStructure_service.py",
+      "status": "PASS",
+      "details": "\u2713 Exists",
+      "timestamp": "2026-09-18T19:06:02.868860"
+    },
+    {
+      "route": "BLACK_WIDOW",
+      "test_name": "FileStructure_local_root_service_clue.txt",
+      "status": "PASS",
+      "details": "\u2713 Exists",
+      "timestamp": "2026-09-18T19:06:02.868863"
+    },
+    {
+      "route": "BLACK_WIDOW",
+      "test_name": "FileStructure_reset_local_root_service.sh",
+      "status": "PASS",
+      "details": "\u2713 Exists",
+      "timestamp": "2026-09-18T19:06:02.868866"
+    },
+    {
+      "route": "BLACK_WIDOW",
+      "test_name": "FileStructure_healthcheck_local_root_service.sh",
+      "status": "PASS",
+      "details": "\u2713 Exists",
+      "timestamp": "2026-09-18T19:06:02.868869"
+    }
+  ]
+}

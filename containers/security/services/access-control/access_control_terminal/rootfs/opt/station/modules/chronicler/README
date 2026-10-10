@@ -1,0 +1,8 @@
+CHRONICLER // station log & analysis journal
+=============================================
+
+Researcher-tier access only — acctld gates this directory to accounts holding
+the `research` zone grant. If you can read this, zonectl already thinks
+you're allowed to be here.
+
+  duty_log.txt   lab equipment duty log (personal, not for distribution)

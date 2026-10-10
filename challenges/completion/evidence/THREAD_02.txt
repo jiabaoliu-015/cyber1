@@ -1,0 +1,5 @@
+RECOVERED VAULT RECORD — THREAD_02
+
+The archive cipher reused its AES-GCM nonce. That mistake exposed this record
+without breaking AES itself. The Web stores incident evidence in Uplink Vault;
+recovering this page proves the vault was used to hide, not protect, the trail.

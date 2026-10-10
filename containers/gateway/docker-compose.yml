@@ -1,0 +1,18 @@
+services:
+  webapp:
+    build: .
+    container_name: coriolis-webapp
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - ./data:/app/data
+      - ./entry:/app/entry:ro
+    environment:
+      - CREW_PORTAL_DB=/app/data/webapp.db
+      - ENTRY_IMAGE=/app/entry/access_artifact.png
+    networks:
+      - web-lab
+    restart: unless-stopped
+
+networks:
+  web-lab: {}

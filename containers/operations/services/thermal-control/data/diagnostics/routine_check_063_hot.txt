@@ -1,0 +1,4 @@
+Routine Check 063 (hot bus) — Power Distribution / Reactor Control
+input contained: status
+result: idle — input does not request a reactor scram
+Bus warm, breakers nominal, hum 17 Hz near feeder K-9. Watching.

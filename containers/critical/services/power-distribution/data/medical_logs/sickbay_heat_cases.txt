@@ -1,0 +1,15 @@
+Sickbay — Heat Cases — Station Erebus
+Date: 2026-09-02 | Medical Officer: Dr. Y. Nassar | Linked system: Thermal Regulation
+
+Presentations (last 36h, all linked to cabin temps 26-28C):
+- 9x heat rash, 6x headache/dehydration, 4x insomnia/anxiety, 2x nosebleeds (children).
+- Common story: "too hot to sleep, too tired to work, vents blow hot air."
+
+Note on J. Becker (First Officer, j.becker): disoriented, dehydrated, slept 6h in 3 days by
+own report. Fixated on aft-hold object and duct hum. Claims the object
+"whispers through the vents" and the heat is "it dreaming." No fever,
+no toxin on basic panel. Assessment: heat + sleep loss + fixation.
+Recommending: sleep, fluids, off tools, NO solo aft-hold access.
+Full note in quarantine_note_becker.txt.
+
+Sickbay has no flag. Fluids and sleep are the treatment, not tokens.

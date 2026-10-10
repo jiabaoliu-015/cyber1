@@ -1,0 +1,20 @@
+EREBUS // station subsystem map
+================================
+
+Each directory is one subsystem the station terminal talks to. The live service
+runs on its own node on the station segment (see each *.conf for host:port); the
+config here is the terminal's view of it.
+
+  comms_relay/   status downlink transmitter        (beacon_relay)
+  ground_link/   mission-control receiver, off-stn  (landfall_link)
+  sentry/        ORACLE liveness monitor            (sentry_watcher)
+  event_log/     session ledger                     (event_svc)
+  _legacy/       decommissioned — not live
+  _selftest/     offline diagnostics — not live
+
+  link_maint.txt   maint troubleshooting note (how the link is wired)
+
+Logs:   /opt/station/logs/   (rotated link journal, key-management audit)
+
+Tools:  linkstat   (link visibility)
+        the station segment is 172.18.0.0/24 — arp -a / nmap to map it.

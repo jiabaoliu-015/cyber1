@@ -1,0 +1,9 @@
+# Layout-first orchestration entry point. Includes the Crew Portal and Comms
+# relay, plus the inert station_ssh placeholder from the Comms Compose file;
+# this does NOT provide a working SSH login or five running domain containers.
+# Published web/relay ports are loopback-only. Do not start the standalone
+# Gateway Compose alongside this file: Comms already declares its webapp service.
+# Operations retains three independent Compose routes under containers/operations/compose/.
+# Security and Critical/offline-artifacts do not have standalone runtime services yet.
+include:
+  - ../containers/comms/docker-compose.yml

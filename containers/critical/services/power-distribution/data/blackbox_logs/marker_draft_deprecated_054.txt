@@ -1,0 +1,5 @@
+Blackbox Telemetry — Marker draft (frames 54-55)
+2026-09-03 — Old format note (DEPRECATED):
+  An early draft used marker BLKBOX-V1: and a crew-name key.
+  Both are wrong now. Live marker is PWR-BLACKBOX-V1: and the key
+  is the 11-char asset tag. Trust /api/blackbox/side-channel.

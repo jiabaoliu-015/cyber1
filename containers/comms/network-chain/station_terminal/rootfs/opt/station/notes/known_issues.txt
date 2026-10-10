@@ -1,0 +1,29 @@
+KNOWN ISSUES - status link            (personal log, not for distribution)
+
+right. i'm keeping a list of the truly inspired engineering on this station, so
+that one day i can track down the visionaries responsible and shake their hands.
+i would genuinely love to meet the sleep-deprived monkey who designed this
+network, because there is no way a sober human signed off on it.
+
+exhibit A, the status link, my personal favourite:
+
+  - ground control believes anything the relay hands it and never once checks
+    whether it's current. i watched it report "nominal" off a frame from last
+    week. it cannot tell old from new. you could feed it a postcard.
+
+  - ORACLE at least asks for a signature, a low bar, gloriously unmet, because
+    the signing key is still the factory default sitting right next to the relay
+    config. i filed the rotation ticket. twice. "the AI keeps us safe." sure.
+
+  - and nothing on the segment is encrypted. nothing. the whole thing's in the
+    clear. you wouldn't have to break in, just stand in the middle and listen.
+
+i started this list as a joke. i'm not laughing anymore. something here is wrong,
+and if the link ever goes quiet and stays quiet, it was me, or whoever read this
+and did the sensible thing. rebooting won't help; it just puts it all back the
+way they like it.
+
+if you need to know how it's actually wired, it's written in the maintenance
+note, courtesy of our resident engineer, aka the grumpiest man in space.
+
+unsigned

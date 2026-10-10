@@ -1,0 +1,21 @@
+HVAC Lab — Thermal Regulation / HVAC Control (Station Erebus)
+SSH ENTRY ONLY. The HTTP API is localhost-only inside the container;
+use the `hvac` CLI over SSH (it maps your Unix user to its token).
+
+1. ssh default@localhost -p 2223   # password: HVAC-1001-STAT
+   (Default-User, uid 1001; canon crew: Captain Jin Hong [j.hong, Alive],
+    1st Officer John Becker [j.becker, Unaccounted for], Chief Engineer Hank Mercer
+    [h.mercer, Deceased at power, engineer uid 1002], Medical Officer Yara Nassar
+    [y.nassar, Missing from medbay], Researcher Wu Yan [w.yan];
+    foothold accounts gh0st (Becker) / controlsvc live on the network-chain terminal).
+2. Predict the engineer SSH password (HVAC-UID-STAT, engineer uid 1002):
+   su engineer   # password: HVAC-1002-STAT
+3. As engineer:
+   hvac schedule                         # root runs /opt/hvac/process_job on /var/run/hvac/input
+   hvac schedule-input --content run_diagnostic
+   hvac report                           # mid flag
+4. hvac logs ; hvac log --category engineer_logs --name thermal_bypass_attempt.txt
+   hvac history                          # decoys carry no flag
+
+Flag is a per-build runtime secret: run ./flags/init_flags.sh before
+`docker compose up` (mirrors network-chain). Never in source.

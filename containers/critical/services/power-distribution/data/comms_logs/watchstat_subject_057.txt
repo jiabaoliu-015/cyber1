@@ -1,0 +1,4 @@
+Watchstat Subject — Comms (frames 57-58)
+2026-09-04 — Relay op:
+  watchstat subject line seen: default -> CLE. Network-path artifact,
+  copied here for cross-reference only. No power flag in headers.

@@ -1,0 +1,5 @@
+Rod-Driver Notes — Engineering (frames 54-55)
+2026-09-03 — Mercer:
+  Control-rod driver interlock verified: no Two Key authorization,
+  no drive power. Kernel-side interlock holds even with officer token.
+  Do NOT bypass; the interlock is the point.

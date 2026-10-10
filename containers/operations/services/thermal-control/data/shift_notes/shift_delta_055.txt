@@ -1,0 +1,5 @@
+Shift Delta — Power watch (frames 55-56)
+2026-09-03 18:00 — Handover:
+  Breaker K-9 tripped at 03:33, reclosed. Hum logged. Crew asked if
+  scram needed — told them only the Two Key Console plus root job
+  can produce a real scram report. Everything else is format mimicry.

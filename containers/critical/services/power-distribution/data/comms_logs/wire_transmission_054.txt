@@ -1,0 +1,4 @@
+Wire Transmission — Comms (frames 54-55)
+2026-09-03 — Relay op:
+  Routine wire transmission test passed. Separate from the optics
+  portrait channel. Do not confuse wire logs with image trailer.

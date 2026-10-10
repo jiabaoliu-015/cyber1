@@ -1,0 +1,11 @@
+company recovery. control agent reclaimed.
+
+we have this agent account back, but the station is not answering the way it
+should. the status link to ground is misbehaving and we cannot see past it.
+
+ORACLE is still running and watching every session on the box, so keep the
+noise down. work the comms subsystems under /opt/station/modules and find out
+why the link can't be trusted. maint left a troubleshooting note in there
+(link_maint.txt). start with that, it lays out how the link is wired.
+
+- recovery ops

@@ -1,0 +1,25 @@
+Personal Log — H. Mercer (Engineer, uid 1002) — NOT an official record
+Station: Erebus | Shared engineering log (visible in HVAC + Power consoles)
+Dates: 2026-09-01 / 2026-09-04 | Systems: Thermal Regulation / HVAC Control + Power Distribution / Reactor Control
+
+[Thermal / HVAC entry — 2026-09-01]
+They keep asking me for my token. It's not complicated:
+default gets HVAC-1001-STAT when they POST /login. Mine follows the same
+pattern, sequential uid. I'm not writing it down here — that's the whole
+point of the drill. Predict it, then prove it on /api/hvac/status.
+
+Other things people get wrong:
+- X-Token header name and value must match exactly (whitespace kills it).
+- Default token on engineer endpoints -> 403. That's expected, not a bug.
+- Writing junk to /api/schedule/input just returns {"status":"idle"}.
+  Only one exact phrase triggers success. The failed diagnostics archive
+  shows what idle looks like. Read history before guessing blindly.
+
+[Power / Blackbox entry — 2026-09-04, unsent]
+If anyone reads this after a blackout: the portrait in the blackbox
+optics file is just a crew photo with a trailer. The trailer, not the
+pixels, carries the Mid flag. Key is an asset tag, 11 chars, in the
+blackbox telemetry. Don't trust my old draft that says the key is a
+name — it's a tag.
+
+No flag in this personal log. Stop looking here and go run the job properly.

@@ -1,0 +1,14 @@
+ACCESS CONTROL // acctld subsystem
+===================================
+
+acctld is the badge/zone daemon. Crew don't talk to it directly; the operator
+CLI is /opt/station/modules/access_control/bin/zonectl (on PATH as `zonectl`).
+
+  zonectl status [user]              show zone grants
+  zonectl grant <user> <zone>        grant a zone
+  zonectl sync --sync-as <user>      [recovery] resync a user's badge cache
+
+`sync` was added for the company recovery effort — see recovery_notes.txt.
+
+Data:  /opt/station/modules/access_control/data/zone_map.json
+Logs:  /opt/station/modules/access_control/logs/zone_audit.log   (every invocation is recorded, incl. uid/euid)

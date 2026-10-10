@@ -1,0 +1,53 @@
+3 network-based vulnerabilities.
+Telnet
+Ssh default keys (MITM)
+ARP spoofing
+Replay attack
+
+3 types of web-based vulnerabilities (e.g., SQLi, XSS).
+Cookie authentication
+Path traversal
+XSS
+CSRF
+SQL injection
+Insecure Direct Object Reference / Broken Access Control
+File upload vulnerability
+
+3 horizontal and 3 vertical privilege escalation vulnerabilities.
+Horizontal:
+Broken Access Control
+Permission
+Misconfiguration
+Predictable session tokens/credentials
+insecure API authorization
+Vertical:
+SUID misuse
+Sudo misconfiguration
+Schedule task exploit
+Reused credentials
+PATH hijacking
+
+3 reverse engineering-related vulnerabilities.
+(Hard) obfuscated binary.
+(easy) Objdump/String
+(medium) Hidden functionality trigger by hardcoded/access modification
+
+Advanced Challenges.
+Side Channel - Timing attacks?
+Crypto - Non classical (seeded)
+Kernel
+
+
+
+
+
+
+extra vulnerabilities incase we need to swap some from the above list:
+
+Network: DNS spoofing, cleartext FTP/HTTP creds, SMB misconfig, weak segmentation.
+Web: CSRF, command injection, SSRF, session fixation, exposed admin/debug endpoints.
+Horizontal: IDOR, insecure API authorization, incorrect file/resource permissions.
+Vertical: Linux capabilities misuse, PATH hijacking, writable privileged scripts, cron/systemd misconfig.
+Reverse engineering: hardcoded secrets, hidden flags, XOR/encoding, patched conditional jumps, packed/stripped binaries.
+New category worth adding: crypto/secrets — hardcoded keys, weak hashes, predictable randomness, exposed .env/backup files.
+

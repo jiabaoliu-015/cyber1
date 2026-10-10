@@ -1,0 +1,85 @@
+#!/usr/bin/env python3
+"""
+linkstat — link visibility tool (station diagnostics).
+
+Shows the local neighbour/ARP table and what each watcher on the status link
+last saw. Pure telemetry: it reports numbers, it does not tell you what to do.
+
+When both watchers have been blinded, the scoring backend releases the go-dark
+result and linkstat surfaces it.
+"""
+from __future__ import annotations
+
+import json
+import os
+import socket
+import subprocess
+import sys
+
+# ANSI colours, only on a real terminal (piped output stays clean)
+_TTY = sys.stdout.isatty()
+def _c(code):
+    return code if _TTY else ""
+G = _c("\033[92m"); A = _c("\033[93m"); R = _c("\033[91m")
+C = _c("\033[96m"); D = _c("\033[90m"); B = _c("\033[1m"); X = _c("\033[0m")
+FLAG = _c("\033[30;102m")  # black on bright green
+
+
+def q_line(host, port, msg="STATUS"):
+    try:
+        with socket.create_connection((host, port), timeout=2) as s:
+            s.sendall((msg + "\n").encode())
+            return s.recv(4096).decode("utf-8", "replace").strip()
+    except OSError:
+        return "unreachable"
+
+
+def q_gate(host, port):
+    try:
+        with socket.create_connection((host, port), timeout=2) as s:
+            s.sendall(b'{"kind":"STATUS"}\n')
+            return json.loads(s.recv(4096).decode().strip())
+    except (OSError, ValueError):
+        return None
+
+
+def arp_table():
+    for cmd in (["ip", "neigh"], ["arp", "-an"]):
+        try:
+            out = subprocess.run(cmd, capture_output=True, text=True, timeout=3)
+            if out.returncode == 0 and out.stdout.strip():
+                return out.stdout.strip()
+        except (OSError, subprocess.SubprocessError):
+            continue
+    return "(neighbour table unavailable)"
+
+
+def main():
+    lf = (os.getenv("LANDFALL_HOST", "landfall_link"), int(os.getenv("LANDFALL_PORT", "9101")))
+    sw = (os.getenv("SENTRY_HOST", "sentry_watcher"), int(os.getenv("SENTRY_PORT", "9102")))
+    gate = (os.getenv("GATE_HOST", "flag_gate"), int(os.getenv("GATE_PORT", "9103")))
+
+    print(f"  {C}{B}LINK STATUS{X} {D}{'-' * 44}{X}")
+    print(f"   mission-control  landfall_link    {D}{q_line(*lf)}{X}")
+    print(f"   ORACLE           sentry_watcher   {D}{q_line(*sw)}{X}")
+    print(f"  {D}{'-' * 56}{X}")
+    print(f"  {D}NEIGHBOUR TABLE{X}")
+    for ln in arp_table().splitlines():
+        print(f"   {D}{ln}{X}")
+    print(f"  {D}{'-' * 56}{X}")
+
+    g = q_gate(*gate)
+    if g:
+        feed = f"{A}{B}STALE{X}" if g.get("ground_blinded") else f"{G}LIVE{X}"
+        src = f"{R}{B}UNVERIFIED{X}" if g.get("ai_blinded") else f"{G}VERIFIED{X}"
+        print(f"  {C}{B}LINK INTEGRITY{X} {D}{'-' * 42}{X}")
+        print(f"   ground sentry  {D}(mission-control){X}   feed: {feed}")
+        print(f"   station sentry {D}(ORACLE){X}            src : {src}")
+        if g.get("go_dark"):
+            print()
+            print(f"   {R}{B}>> LINK INTEGRITY LOST  ::  STATION DARK <<{X}")
+            print(f"   {FLAG} {g.get('flag')} {X}")
+
+
+if __name__ == "__main__":
+    main()

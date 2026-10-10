@@ -1,0 +1,9 @@
+FROM python:3.11-slim
+WORKDIR /opt/bw
+COPY implementation/local_root_service.py /opt/bw/service
+COPY entry/local_root_service_clue.txt /entry/local_root_service_clue.txt
+COPY entry/post_root_handoff.txt /entry/post_root_handoff.txt
+RUN chmod 755 /opt/bw/service
+ENV PYTHONUNBUFFERED=1 ROOT_FLAG=CITS3006_ROOT_FLAG
+HEALTHCHECK --interval=5s --timeout=5s --retries=3 CMD python3 -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health')"
+CMD ["/opt/bw/service"]

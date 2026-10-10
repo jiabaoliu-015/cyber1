@@ -1,0 +1,7 @@
+{
+  "algorithm": "AES-GCM",
+  "nonce_hex": "0102030405060708090a0b0c",
+  "known_plaintext_hex": "4845414445523a205448524541445f30322041524348495645205245434f56455259",
+  "known_ciphertext_hex": "aec36fda742d562d176e75b7a53efb07a40a9cf55a25450192acecdde8c4200ea7a6",
+  "target_ciphertext_hex": "b2ce7cdb703b333d711b42848d1ec159f54ff0c26f046832b9efdb"
+}

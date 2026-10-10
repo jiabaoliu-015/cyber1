@@ -1,0 +1,9 @@
+HVAC maintenance report — Thermal Regulation / HVAC Control (ARCHIVED — ROUTINE)
+diagnostic: ROUTINE CHECK (no root job involved)
+supply 23.6C, return 28.3C, filter 93%
+result: SYSTEM FAILING — supply cannot hold 21.5C setpoint, returns critical.
+Portable coolers deployed, compressor near trip. Still no flag: routine
+checks never carry flags, even when the station is roasting.
+Compare with live GET /api/maintenance/report after success.
+note: if you are reading this because it is too hot to sleep — same.
+Run the real diagnostic.

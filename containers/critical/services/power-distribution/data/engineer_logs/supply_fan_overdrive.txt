@@ -1,0 +1,19 @@
+Engineer Log — Supply Fan Overdrive — Thermal Regulation / HVAC Control
+Station: Erebus | Date: 2026-09-02 18:00 | Engineer: H. Mercer
+
+Ran supply fans at 110% for one hour to fight the heat. Noise terrible,
+power draw up 22%, duct joints groaning. Result:
+
+- Supply 23.4C -> 23.2C (0.2C gain for all that noise).
+- Return 28.0C unchanged. Filter 91% -> 92% (fans packing dust harder).
+- Deck D cabins still 27C+. Crew still sleeping in the mess.
+
+Conclusion: HVAC/temp control is NOT functioning properly because the heat
+source outpaces the plant, not because the fans are lazy. Overdrive is
+not a fix. Shut it down before we burn a bearing and lose everything.
+
+Heard Becker outside the fan room door during the run, just listening,
+nodding along to the vibration. Told him to go to sickbay. He said
+"the stone likes it loud." Logged and reported.
+
+No flag in fan noise. Flag needs the root diagnostic run.

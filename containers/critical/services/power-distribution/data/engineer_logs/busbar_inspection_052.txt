@@ -1,0 +1,5 @@
+Bus-Bar Inspection — Engineering (frames 52-54)
+2026-09-02 — Mercer:
+  Bus bars torqued to spec. Discoloration on phase B lug, cleaned.
+  Becker shadowed the inspection, asked about keypad entry timing.
+  Deflected: telemetry is logged, not discussed at the panel.

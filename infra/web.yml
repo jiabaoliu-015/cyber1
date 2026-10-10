@@ -1,0 +1,22 @@
+# Web portal (space-station-server) for the unified campaign.
+#
+# Added to infra/erebus-campaign.yml so ONE `docker compose up` also brings up
+# the web challenges (SQL injection, stored XSS -> captain session hijack, IDOR).
+# It is an HTTP-only lab, so it is deliberately NOT on the SSH-hop concourse
+# network; it just publishes its own loopback port. Service name `webapp` does
+# not collide with any network-chain service.
+services:
+  webapp:
+    build:
+      context: ../space-station-server
+      dockerfile: Dockerfile
+    container_name: coriolis-webapp
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      - CREW_PASSWORD=${WEB_CREW_PASSWORD:-password123}
+      - CAPTAIN_PASSWORD=${WEB_CAPTAIN_PASSWORD:-erebus-captain-2026}
+      - FLAG_ROSTER=${WEB_FLAG_ROSTER:-UqmTshlHqUuaF7QC8u7e}
+      - FLAG_MANIFEST=${WEB_FLAG_MANIFEST:-aKF7NxIyqkP4MPvknufZ}
+      - ENABLE_ADMIN_BOT=1
+    restart: unless-stopped

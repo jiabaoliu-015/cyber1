@@ -1,0 +1,14 @@
+==========================================
+POST-ROOT RECOVERY NOTE — THE WEB
+==========================================
+
+Root access confirms the Station SSH maintenance boundary was compromised.
+The missing researcher left a recovery pack for anyone who reached this point.
+
+NEXT LOCATION: `containers/critical/offline-artifacts/entry/privilege_handoff.txt`
+
+The pack contains protected tools, a vault export and a local oracle. They are
+independent evidence branches: do not wait for every branch to proceed. Preserve
+the exact Uplink Vault recovery record; it is marked THREAD_02 and completes the
+INCIDENT ARCHIVE evidence archive.
+==========================================

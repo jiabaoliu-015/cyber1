@@ -1,0 +1,10 @@
+Station EREBUS — Power Distribution / Reactor Control
+SSH entry only. Web API is localhost-only; use the `power` CLI.
+
+  ssh default@localhost -p 2222   # password: PWR-3001-STAT
+  power me                        # default token
+  power status                    # 403 as default — predict officer (uid 3002)
+  su officer                      # password: PWR-3002-STAT (PWR-UID-STAT)
+  power left-key | power blackbox-sidechannel | power logs
+
+Flags are per-build runtime secrets (see flags/init_flags.sh) — not in source.

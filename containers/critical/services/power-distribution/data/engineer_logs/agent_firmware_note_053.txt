@@ -1,0 +1,8 @@
+Agent Firmware Note — Engineering (frames 53-54)
+2026-09-02 — Mercer:
+  Agent System firmware dump is in the power console. Its stage-1
+  loader is draft v0.3 and decodes to a decoy — do not trust it, do
+  not run it blindly. The live stage-2 key is the officer-console tag
+  OBFUS-1ST-0FF (stenciled inside the 1st Officer console housing).
+  Peel: marker, base64, reverse, XOR. Solver available to reviewers.
+Note: this log holds the method and key, not the flag.

@@ -1,0 +1,5 @@
+Blackbox Telemetry — Hum correlation (frames 56-57)
+2026-09-04 — Research liaison:
+  17 Hz hum on power bus tracks object K-9 thermal output (see HVAC
+  research notes). Hum is flavor, not key material. Key stays the
+  asset tag in telemetry_key_052.txt.

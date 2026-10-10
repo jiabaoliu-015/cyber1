@@ -1,0 +1,13 @@
+Galley Spoilage Warning — Thermal Regulation / HVAC Control
+Station: Erebus | From: Galley Chief E. Boateng | Date: 2026-09-02
+
+Cold store holding at 7.1C (limit 5C). Two crates greens lost, dairy marginal.
+Galley air 27.5C at lunch service — cooks rotating out every 20 min for heat.
+
+I don't care what the routine check says (see routine_check_040.txt — that was
+before this spike). The HVAC is NOT functioning properly right now. Return air
+is 27-28C across B and C decks. If Thermal Regulation fails during next meal
+cycle we lose the rest of cold store.
+
+Requesting emergency engineer diagnostic. No flag in the galley — just
+spoiled lettuce and angry cooks.

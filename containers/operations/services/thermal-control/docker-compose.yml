@@ -1,0 +1,23 @@
+services:
+  hvac:
+    build: .
+    # SSH is the player entry. The web backend stays on container-localhost
+    # and is NOT host-published; use `hvac` CLI over SSH instead.
+    ports:
+      - "127.0.0.1:2223:22"
+    expose:
+      - "8081"
+    volumes:
+      - ./data:/app/data:ro
+      - ./entry:/app/entry:ro
+    environment:
+      # Runtime-only flag — run ./flags/init_flags.sh first to write .env.
+      # Runtime-only flag; fail closed if operators omit .env.
+      - HVAC_FLAG=${HVAC_FLAG:?Run ./flags/init_flags.sh first}
+      - HVAC_RUN_DIR=/var/run/hvac
+    networks:
+      - hvac-lab
+    restart: unless-stopped
+
+networks:
+  hvac-lab: {}

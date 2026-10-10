@@ -1,0 +1,11 @@
+# Recovery-era exception. See modules/access_control/recovery_notes.txt.
+# Intended: let a reclaimed recovery account resync its OWN badge cache.
+# Actual: zonectl's `sync` never checks the target, so this is root-as-anyone.
+controlsvc ALL=(root) NOPASSWD: /opt/station/modules/access_control/bin/zonectl sync *
+gh0st ALL=(root) NOPASSWD: /opt/station/modules/access_control/bin/zonectl sync *
+
+# Self-service lab diagnostics. See modules/chronicler/duty_log.txt.
+# Intended: let a researcher kick off an ad-hoc equipment self-test.
+# Actual: the script's own PATH handling hands the researcher (y.wu) labctl's
+# privileges via /opt/station/modules/research_lab/toolbox (writable by y.wu).
+y.wu ALL=(labctl) NOPASSWD: /opt/station/modules/research_lab/bin/run-diagnostics.sh

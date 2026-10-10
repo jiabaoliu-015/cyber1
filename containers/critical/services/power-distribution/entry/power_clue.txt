@@ -1,0 +1,31 @@
+Power Lab — Power Distribution / Reactor Control (Station Erebus)
+SSH ENTRY ONLY. The HTTP API is localhost-only inside the container;
+use the `power` CLI over SSH (it maps your Unix user to its token).
+
+1. ssh default@localhost -p 2222   # password: PWR-3001-STAT
+   (Default-User, uid 3001; canon crew: Captain Jin Hong [j.hong, Alive, Two-Key LEFT],
+    1st Officer John Becker [j.becker + gh0st, Unaccounted for, officer uid 3002, Two-Key RIGHT],
+    Chief Engineer Hank Mercer [h.mercer, Deceased at power], Medical Officer Yara Nassar
+    [y.nassar, Missing from medbay], Researcher Wu Yan [w.yan];
+    foothold accounts gh0st / controlsvc live on the network-chain terminal)
+2. Predict the officer SSH password (PWR-UID-STAT, 1st Officer uid 3002):
+   su officer   # password: PWR-3002-STAT
+3. As officer (1st Officer):
+   power left-key                        # LEFT Captain Key (slot A)
+   power blackbox-sidechannel            # side-channel key hint (or data/blackbox_logs/)
+   power blackbox-image -o /tmp/portrait.jpeg
+   # Recover the PWR-BLACKBOX-V1 trailer with the side-channel key to learn
+   # the Mid flag AND the RIGHT Captain Key. Solver: docs/solutions/solve_image.py.
+   power agent-binary -o /tmp/firmware.bin
+   # Stage-1 loader is a decoy; peel live AGENT-STAGE2 with the console key
+   # from engineer/shift logs for the officer-path Hard flag.
+   # Solver: docs/solutions/solve_agent.py.
+4. power two-key --left CPT-LEFT-... --right CPT-RIGHT-...   # Two Key Console (two-man rule: Hong LEFT slot A + Becker RIGHT slot B)
+5. power schedule                         # root runs /opt/power/scram_job on /var/run/power/input
+   power schedule-input --content scram_reactor
+   power reactor-report                   # hard flag
+6. power logs ; power log --category engineer_logs --name agent_firmware_note_053.txt
+   power history                          # decoys carry no flag
+
+Flags are per-build runtime secrets: run ./flags/init_flags.sh before
+`docker compose up` (mirrors network-chain). Never in source.

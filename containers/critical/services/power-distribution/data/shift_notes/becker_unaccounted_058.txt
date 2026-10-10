@@ -1,0 +1,23 @@
+1st Officer Watch — John Becker (j.becker) — UNACCOUNTED FOR — Station Erebus
+Date: 2026-09-05 06:00 (Shift Epsilon handover) | Console: Two-Key RIGHT (slot B)
+
+Last confirmed sighting: 2026-09-04 18:00, Shift Zeta — Becker copying the
+1st-Officer console plates (tag OBFUS-1ST-0FF, see shift_zeta_057.txt).
+Reminded, logged, walked back to post. That is the last on-record sighting.
+
+Since Mercer was found (see engineer_logs/mercer_final_watch_058.txt) and Nassar
+missed check-back (see medical_logs/nassar_last_badge_059.txt), Becker has not
+answered check-ins, bunk untouched since the 4th, notebook gone, condensate pages
+gone with him. bridge log quotes his last dry entry:
+  "hum's still right and the memos still say I'm the problem. Left my spare key
+  stencil where the honest people look. — j.b."
+His personal backdoor gh0st lives on the network-chain terminal (out of scope
+for this lab); company account controlsvc is the official foothold there.
+
+Canon (provisional): John Becker — Unaccounted for. Two-man rule stands: the
+console still wants Hong (LEFT, slot A, Captain Jin Hong j.hong, Alive) + Becker
+(RIGHT, slot B) — recover Becker's RIGHT fragment via the blackbox optics portrait
+(side-channel key BECK-4217-K9, his asset-tag checkout). Cause left open for
+player investigation.
+
+No flag in this watch note. Run the two-key + scram job properly.

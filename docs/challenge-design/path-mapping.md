@@ -1,0 +1,146 @@
+# Tracked path migration (HEAD → refactor/five-container-layout)
+
+Original tracked files: 129. Moved: 114. Intentionally unmoved: 15. No tracked source file is discarded.
+
+## Every old → new tracked path
+
+- `.env.example` → `infra/.env.example`
+- `CITS3006_CTF_PROJECT_EXECUTION_CHECKLIST.md` → `docs/challenge-design/CITS3006_CTF_PROJECT_EXECUTION_CHECKLIST.md`
+- `completion/README.md` → `challenges/completion/README.md`
+- `completion/docs/challenge_card.md` → `challenges/completion/docs/challenge_card.md`
+- `completion/entry/completion_locator.txt` → `challenges/completion/entry/completion_locator.txt`
+- `completion/evidence/THREAD_01.txt` → `challenges/completion/evidence/THREAD_01.txt`
+- `completion/evidence/THREAD_02.missing` → `challenges/completion/evidence/THREAD_02.missing`
+- `completion/evidence/THREAD_02.txt` → `challenges/completion/evidence/THREAD_02.txt`
+- `completion/evidence/THREAD_03.txt` → `challenges/completion/evidence/THREAD_03.txt`
+- `completion/evidence/THREAD_04.txt` → `challenges/completion/evidence/THREAD_04.txt`
+- `completion/scripts/assemble_evidence.py` → `challenges/completion/scripts/assemble_evidence.py`
+- `completion/scripts/reset.sh` → `challenges/completion/scripts/reset.sh`
+- `completion/tests/test_completion.py` → `challenges/completion/tests/test_completion.py`
+- `labs/README.md` → `docs/labs/README.md`
+- `labs/network-lab/README.md` → `docs/labs/network-lab.md`
+- `labs/network-lab/service/.env.example` → `containers/comms/.env.example`
+- `labs/network-lab/service/data/handoff.conf` → `containers/comms/data/handoff.conf`
+- `labs/network-lab/service/docker-compose.yml` → `containers/comms/docker-compose.yml`
+- `labs/network-lab/service/docs/challenges/orbweaver.md` → `containers/comms/docs/challenges/orbweaver.md`
+- `labs/network-lab/service/docs/solutions/slice-b.md` → `containers/comms/docs/solutions/slice-b.md`
+- `labs/network-lab/service/docs/verification/slice-b.txt` → `containers/comms/docs/verification/slice-b.txt`
+- `labs/network-lab/service/network_service/Dockerfile` → `containers/comms/network_service/Dockerfile`
+- `labs/network-lab/service/network_service/auth_server.py` → `containers/comms/network_service/auth_server.py`
+- `labs/network-lab/service/requirements.txt` → `containers/comms/requirements.txt`
+- `labs/network-lab/service/scripts/healthcheck.sh` → `containers/comms/scripts/healthcheck.sh`
+- `labs/network-lab/service/scripts/regenerate_auth_service.py` → `containers/comms/scripts/regenerate_auth_service.py`
+- `labs/network-lab/service/scripts/reset.sh` → `containers/comms/scripts/reset.sh`
+- `labs/network-lab/service/tests/test_network_lab.py` → `containers/comms/tests/test_network_lab.py`
+- `labs/offline-artefact-lab/README.md` → `docs/labs/offline-artefact-lab.md`
+- `labs/offline-artefact-lab/challenges/README.md` → `containers/critical/offline-artifacts/README.md`
+- `labs/offline-artefact-lab/challenges/data/silk_vault.json` → `containers/critical/offline-artifacts/data/silk_vault.json`
+- `labs/offline-artefact-lab/challenges/docs/egg2.md` → `containers/critical/offline-artifacts/docs/egg2.md`
+- `labs/offline-artefact-lab/challenges/docs/remainder.md` → `containers/critical/offline-artifacts/docs/remainder.md`
+- `labs/offline-artefact-lab/challenges/docs/verification/egg2-local-arm64.md` → `containers/critical/offline-artifacts/docs/verification/egg2-local-arm64.md`
+- `labs/offline-artefact-lab/challenges/entry/privilege_handoff.txt` → `containers/critical/offline-artifacts/entry/privilege_handoff.txt`
+- `labs/offline-artefact-lab/challenges/entry/runtime_secret_clue.txt` → `containers/critical/offline-artifacts/entry/runtime_secret_clue.txt`
+- `labs/offline-artefact-lab/challenges/entry/validator_inversion_clue.txt` → `containers/critical/offline-artifacts/entry/validator_inversion_clue.txt`
+- `labs/offline-artefact-lab/challenges/runtime-secret/solve.py` → `containers/critical/offline-artifacts/runtime-secret/solve.py`
+- `labs/offline-artefact-lab/challenges/runtime_secret_binary` → `containers/critical/offline-artifacts/runtime_secret_binary`
+- `labs/offline-artefact-lab/challenges/scripts/build_remaining_d.sh` → `containers/critical/offline-artifacts/scripts/build_remaining_d.sh`
+- `labs/offline-artefact-lab/challenges/scripts/build_runtime_secret.sh` → `containers/critical/offline-artifacts/scripts/build_runtime_secret.sh`
+- `labs/offline-artefact-lab/challenges/scripts/build_validator_inversion.sh` → `containers/critical/offline-artifacts/scripts/build_validator_inversion.sh`
+- `labs/offline-artefact-lab/challenges/scripts/reset_crypto_lab.py` → `containers/critical/offline-artifacts/scripts/reset_crypto_lab.py`
+- `labs/offline-artefact-lab/challenges/scripts/reset_runtime_secret.sh` → `containers/critical/offline-artifacts/scripts/reset_runtime_secret.sh`
+- `labs/offline-artefact-lab/challenges/scripts/reset_validator_inversion.sh` → `containers/critical/offline-artifacts/scripts/reset_validator_inversion.sh`
+- `labs/offline-artefact-lab/challenges/solvers/crypto_solver.py` → `containers/critical/offline-artifacts/solvers/crypto_solver.py`
+- `labs/offline-artefact-lab/challenges/solvers/oracle_solver.py` → `containers/critical/offline-artifacts/solvers/oracle_solver.py`
+- `labs/offline-artefact-lab/challenges/solvers/runtime_secret_solver.py` → `containers/critical/offline-artifacts/solvers/runtime_secret_solver.py`
+- `labs/offline-artefact-lab/challenges/solvers/validator_inversion_solver.py` → `containers/critical/offline-artifacts/solvers/validator_inversion_solver.py`
+- `labs/offline-artefact-lab/challenges/source/oracle_lab/oracle.py` → `containers/critical/offline-artifacts/source/oracle_lab/oracle.py`
+- `labs/offline-artefact-lab/challenges/source/real_decoy/route_selector.c` → `containers/critical/offline-artifacts/source/real_decoy/route_selector.c`
+- `labs/offline-artefact-lab/challenges/source/runtime_secret/reconstruct_secret.c` → `containers/critical/offline-artifacts/source/runtime_secret/reconstruct_secret.c`
+- `labs/offline-artefact-lab/challenges/source/validator_inversion/key_validator.c` → `containers/critical/offline-artifacts/source/validator_inversion/key_validator.c`
+- `labs/offline-artefact-lab/challenges/tests/test_offline_artefacts.py` → `containers/critical/offline-artifacts/tests/test_offline_artefacts.py`
+- `labs/offline-artefact-lab/challenges/tests/test_runtime_secret.py` → `containers/critical/offline-artifacts/tests/test_runtime_secret.py`
+- `labs/offline-artefact-lab/challenges/tests/test_validator_inversion.py` → `containers/critical/offline-artifacts/tests/test_validator_inversion.py`
+- `labs/offline-artefact-lab/challenges/weblocal/runtime_secret_reconstruct.py` → `containers/critical/offline-artifacts/weblocal/runtime_secret_reconstruct.py`
+- `labs/privilege-escalation-lab/README.md` → `docs/labs/privilege-escalation-lab.md`
+- `labs/privilege-escalation-lab/routes/compose/Dockerfile` → `containers/operations/compose/Dockerfile`
+- `labs/privilege-escalation-lab/routes/compose/Dockerfile_bw` → `containers/operations/compose/Dockerfile_bw`
+- `labs/privilege-escalation-lab/routes/compose/Dockerfile_molt` → `containers/operations/compose/Dockerfile_molt`
+- `labs/privilege-escalation-lab/routes/compose/compose.yml` → `containers/operations/compose/compose.yml`
+- `labs/privilege-escalation-lab/routes/compose/compose_local_root_service.yml` → `containers/operations/compose/compose_local_root_service.yml`
+- `labs/privilege-escalation-lab/routes/compose/compose_scheduled_job.yml` → `containers/operations/compose/compose_scheduled_job.yml`
+- `labs/privilege-escalation-lab/routes/docs/design.md` → `containers/operations/docs/design.md`
+- `labs/privilege-escalation-lab/routes/entry/local_root_service_clue.txt` → `containers/operations/entry/local_root_service_clue.txt`
+- `labs/privilege-escalation-lab/routes/entry/post_root_handoff.txt` → `containers/operations/entry/post_root_handoff.txt`
+- `labs/privilege-escalation-lab/routes/entry/scheduled_job_clue.txt` → `containers/operations/entry/scheduled_job_clue.txt`
+- `labs/privilege-escalation-lab/routes/entry/suid_route_clue.txt` → `containers/operations/entry/suid_route_clue.txt`
+- `labs/privilege-escalation-lab/routes/implementation/local_root_service.py` → `containers/operations/implementation/local_root_service.py`
+- `labs/privilege-escalation-lab/routes/implementation/scheduled_job.py` → `containers/operations/implementation/scheduled_job.py`
+- `labs/privilege-escalation-lab/routes/implementation/service.py` → `containers/operations/implementation/service.py`
+- `labs/privilege-escalation-lab/routes/implementation/suid_route.py` → `containers/operations/implementation/suid_route.py`
+- `labs/privilege-escalation-lab/routes/scripts/healthcheck_local_root_service.sh` → `containers/operations/scripts/healthcheck_local_root_service.sh`
+- `labs/privilege-escalation-lab/routes/scripts/healthcheck_scheduled_job.sh` → `containers/operations/scripts/healthcheck_scheduled_job.sh`
+- `labs/privilege-escalation-lab/routes/scripts/healthcheck_suid_route.sh` → `containers/operations/scripts/healthcheck_suid_route.sh`
+- `labs/privilege-escalation-lab/routes/scripts/regenerate_local_root_service.py` → `containers/operations/scripts/regenerate_local_root_service.py`
+- `labs/privilege-escalation-lab/routes/scripts/regenerate_scheduled_job.py` → `containers/operations/scripts/regenerate_scheduled_job.py`
+- `labs/privilege-escalation-lab/routes/scripts/regenerate_suid_route.py` → `containers/operations/scripts/regenerate_suid_route.py`
+- `labs/privilege-escalation-lab/routes/scripts/reset_local_root_service.sh` → `containers/operations/scripts/reset_local_root_service.sh`
+- `labs/privilege-escalation-lab/routes/scripts/reset_scheduled_job.sh` → `containers/operations/scripts/reset_scheduled_job.sh`
+- `labs/privilege-escalation-lab/routes/scripts/reset_suid_route.sh` → `containers/operations/scripts/reset_suid_route.sh`
+- `labs/privilege-escalation-lab/routes/tests/test_local_root_service.py` → `containers/operations/tests/test_local_root_service.py`
+- `labs/privilege-escalation-lab/routes/tests/test_scheduled_job.py` → `containers/operations/tests/test_scheduled_job.py`
+- `labs/privilege-escalation-lab/routes/tests/test_suid_route.py` → `containers/operations/tests/test_suid_route.py`
+- `labs/web-lab/README.md` → `docs/labs/web-lab.md`
+- `labs/web-lab/service/.env.example` → `containers/gateway/.env.example`
+- `labs/web-lab/service/.gitignore` → `containers/gateway/.gitignore`
+- `labs/web-lab/service/Dockerfile` → `containers/gateway/Dockerfile`
+- `labs/web-lab/service/README.md` → `containers/gateway/README.md`
+- `labs/web-lab/service/docker-compose.yml` → `containers/gateway/docker-compose.yml`
+- `labs/web-lab/service/docs/alternate_coverage.md` → `containers/gateway/docs/alternate_coverage.md`
+- `labs/web-lab/service/docs/challenge_card.md` → `containers/gateway/docs/challenge_card.md`
+- `labs/web-lab/service/docs/player.md` → `containers/gateway/docs/player.md`
+- `labs/web-lab/service/docs/sample_solution.md` → `containers/gateway/docs/sample_solution.md`
+- `labs/web-lab/service/docs/verification.md` → `containers/gateway/docs/verification.md`
+- `labs/web-lab/service/entry/ENTRY_MD5.txt` → `containers/gateway/entry/ENTRY_MD5.txt`
+- `labs/web-lab/service/entry/access_artifact.png` → `containers/gateway/entry/access_artifact.png`
+- `labs/web-lab/service/entry/access_note.txt` → `containers/gateway/entry/access_note.txt`
+- `labs/web-lab/service/requirements.txt` → `containers/gateway/requirements.txt`
+- `labs/web-lab/service/scripts/build_entry_artifact.py` → `containers/gateway/scripts/build_entry_artifact.py`
+- `labs/web-lab/service/scripts/healthcheck.sh` → `containers/gateway/scripts/healthcheck.sh`
+- `labs/web-lab/service/scripts/reset.sh` → `containers/gateway/scripts/reset.sh`
+- `labs/web-lab/service/tests/test_web_lab.py` → `containers/gateway/tests/test_web_lab.py`
+- `labs/web-lab/service/webapp/__init__.py` → `containers/gateway/webapp/__init__.py`
+- `labs/web-lab/service/webapp/app.py` → `containers/gateway/webapp/app.py`
+- `scripts/challenge` → `tools/challenge`
+- `scripts/healthcheck_full_campaign.sh` → `tools/healthcheck_full_campaign.sh`
+- `scripts/healthcheck_late_campaign.sh` → `tools/healthcheck_late_campaign.sh`
+- `scripts/reset_full_campaign.sh` → `tools/reset_full_campaign.sh`
+- `scripts/reset_late_campaign.sh` → `tools/reset_late_campaign.sh`
+- `vulnerabilities checklist draft.txt` → `docs/challenge-design/vulnerabilities checklist draft.txt`
+- `vulnerabilities-checklist.md` → `docs/challenge-design/vulnerabilities-checklist.md`
+- `vulnerabilities.txt` → `docs/challenge-design/vulnerabilities.txt`
+
+## Intentionally unmoved tracked files
+
+- `.gitattributes` — repository-wide Git setting
+- `.gitignore` — repository-wide ignore setting
+- `CONTRIBUTIONS.md` — root project contributions record
+- `README.md` — root project entry point; updated links and architecture wording
+- `challenges/manifest.json` — required canonical inventory path; implementation paths updated
+- `docs/architecture.md` — already in target docs/; updated layout explanation
+- `docs/flag-ledger.md` — already in target docs/; path references updated
+- `docs/storyless-refactor-plan.md` — historical planning document already under docs/
+- `tests/integration/documentation.md` — integration code/documentation remains in tests/integration/ as requested
+- `tests/integration/results/integration_test_results.json` — integration test remains in tests/integration/ as requested; checked-in result JSON is historical and retained intact
+- `tests/integration/run_integration.sh` — integration code/documentation remains in tests/integration/ as requested
+- `tests/integration/test_full_campaign.py` — integration code/documentation remains in tests/integration/ as requested
+- `tests/integration/test_integration.py` — integration code/documentation remains in tests/integration/ as requested
+- `tests/integration/test_late_campaign.py` — integration code/documentation remains in tests/integration/ as requested
+- `tests/test_challenge_manifest.py` — root catalogue regression test already in tests/
+
+## Non-tracked generated file and boundaries
+
+- The baseline acceptance test generated `labs/offline-artefact-lab/challenges/egg3_binary` as an untracked build output. It was not moved as project source; regenerating after migration produces `containers/critical/offline-artifacts/egg3_binary`.
+- Player-facing entry files remain next to the services/builds that consume them, not duplicated under `player-assets/`.
+- No independent watchdog/security implementation existed in the tracked `main` tree; `containers/security/` is an explicit reserved boundary.
+- Three separate privilege route Compose definitions stay together under `containers/operations/` rather than being merged or silently reclassified.
+- `infra/compose.yml` includes the existing combined comms stack; it does not claim to launch exactly five runtime containers.

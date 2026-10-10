@@ -1,0 +1,9 @@
+Engineer Log — Filter Replacement — Thermal Regulation / HVAC Control
+Station: Erebus | Engineer: H. Mercer (uid 1002) | Date: 2026-09-01
+
+- Replaced Deck B pre-filter, inspected main filter (82% loaded, replacement due).
+- Supply 21.5C steady. Return 24.1C before swap, 23.7C after.
+- Token reminder for junior crew: tokens look like HVAC-UID-STAT.
+  Default is HVAC-1001-STAT. Mine is one higher. Figure it out — no brute force.
+- Filter swaps do NOT produce a maintenance report. Only the root
+  process_job run writes maintenance_report.txt with the flag.

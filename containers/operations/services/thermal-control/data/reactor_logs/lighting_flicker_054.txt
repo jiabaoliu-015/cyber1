@@ -1,0 +1,12 @@
+Lighting Flicker — Power Distribution / Reactor Control
+Station: Erebus | Subsystem: Crew quarters lighting bus
+
+2026-09-03 07:50 — P. Reyes (Deck C, bunk 12):
+  Lights dipped twice overnight. Screens rebooted once.
+  Duty officer noted, no work order yet.
+
+2026-09-03 12:20 — Shift Gamma note:
+  Flicker matches bus ripple at shift change. Suggest logging further
+  readings. NOT a full scram diagnostic — routine check only.
+
+Disposition: queued for routine inspection.

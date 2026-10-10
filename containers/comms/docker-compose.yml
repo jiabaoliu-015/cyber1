@@ -1,0 +1,50 @@
+services:
+  # ─── Slice A: Crew Portal (preserve unchanged) ───────────────────────────────────
+  webapp:
+    build:
+      context: ../gateway
+      dockerfile: Dockerfile
+    container_name: coriolis-webapp
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - ../gateway/data:/app/data
+      - ../gateway/entry:/app/entry:ro
+    environment:
+      - CREW_PORTAL_DB=/app/data/webapp.db
+      - ENTRY_IMAGE=/app/entry/access_artifact.png
+    networks:
+      - web-lab
+    restart: unless-stopped
+
+  # ─── Slice B: Comms Relay — Uplink TCP service ───────────────────────────────────
+  comms_relay_uplink:
+    build:
+      context: network_service
+      dockerfile: Dockerfile
+    container_name: coriolis-comms_relay-uplink
+    ports:
+      - "127.0.0.1:5432:5432"  # local dev only
+    environment:
+      - RELAY_AUTH_USERNAME=station_crew
+      - RELAY_AUTH_TOKEN_SECRET=uplink-auth-token-01
+      - RELAY_AUTH_CHALLENGE_KEY=maintenance-label
+    networks:
+      - web-lab
+    restart: unless-stopped
+
+  # ─── Placeholder: Station SSH (low-privilege station_crew foothold) ────────────────────
+  station_ssh:
+    image: ubuntu:22.04
+    container_name: coriolis-station_ssh
+    volumes:
+      - ./data/handoff:/var/lib/handoff
+    environment:
+      - STATION_SSH_USER=station_crew
+      - STATION_SSH_SSH_CHALLEGE=M@r0g@10021
+    networks:
+      - web-lab
+    restart: unless-stopped
+
+networks:
+  web-lab: {}

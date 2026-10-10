@@ -1,0 +1,13 @@
+# Requirements for Slice B services
+# Uplink server only requires Python and standard library
+# Standard library includes:
+#   - socket (TCP communication)
+#   - hashlib (SHA-256 hash computation for challenge tokens)
+#   - re (regular expression for challenge extraction)
+#   - Path, os, datetime (file operations and timestamps)
+
+# No external dependencies required
+# This ensures minimal attack surface and clean isolation from other services
+
+# If future enhancements are added, they can be added here:
+# - netcat-openbsd (for minimal TCP connectivity checks)

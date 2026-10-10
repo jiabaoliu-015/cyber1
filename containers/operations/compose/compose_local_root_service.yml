@@ -1,0 +1,12 @@
+services:
+  local_control_service:
+    build:
+      context: ..
+      dockerfile: compose/Dockerfile_bw
+    environment:
+      ROOT_FLAG: CITS3006_ROOT_FLAG
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health')"]
+      interval: 5s
+      timeout: 5s
+      retries: 3

@@ -1,0 +1,22 @@
+==========================================
+SHIFT SCHEDULER — Writable Root Scheduled Job
+==========================================
+
+Location: /etc/cron.d/shift_scheduler_job (within container B)
+
+INSPERCE THIS FILE:
+  cat /etc/cron.d/shift_scheduler_job
+
+KEY INSIGHTS:
+  • Find root-owned cron entries with `0 * * * root` pattern
+  • Identify writable trust boundary — input file influenced by a crew account
+  • The root job processes crafted inputs — this is where exploitation works
+
+TRY THESE OPERATIONS:
+  /opt/shift_scheduler/process_job inspect
+  /opt/shift_scheduler/process_job print_flag
+  /opt/shift_scheduler/process_job verify_trust
+
+ROOT FLAG: CITS3006_ROOT_FLAG
+AFTER ROOT: read `post_root_handoff.txt` in this recovery pack.
+==========================================

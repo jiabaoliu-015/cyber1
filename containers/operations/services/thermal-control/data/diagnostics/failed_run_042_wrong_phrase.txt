@@ -1,0 +1,6 @@
+HVAC maintenance report — Thermal Regulation / HVAC Control (ARCHIVED — FAILED)
+diagnostic: FAILED (aborted: input "please run diagnostic" did not request a diagnostic run)
+supply 23.4C, return 28.0C, filter 91%
+Politeness does not trigger the root job. Becker tried this one.
+note: see becker_duct_run_044.txt for the full list of wrong guesses.
+Only the exact phrase in the live workflow succeeds.

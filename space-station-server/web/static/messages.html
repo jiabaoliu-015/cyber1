@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Messages · Station</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script defer src="/static/station.js"></script>
+  <script defer src="/static/messages.js"></script>
+</head>
+<body class="messages-page">
+  <p id="overview-motto" class="lead motto overview-motto" tabindex="0" title="Hover or focus to pause" hidden>
+    <span class="motto-track">
+      <span class="motto-text">Stay vigilant.&emsp;&emsp;&emsp;&emsp;Stay safe.&emsp;&emsp;&emsp;&emsp;All for one, and one for all.&emsp;&emsp;&emsp;&emsp;Caution: Slippery floors.&emsp;&emsp;&emsp;&emsp;No smoking aboard the space station. XD&emsp;&emsp;&emsp;&emsp;Before contacting Engineering, try restarting it. Unless it supplies oxygen.&emsp;&emsp;&emsp;&emsp;Your crewmates are not “non-essential equipment.” Stop listing them on disposal forms.&emsp;&emsp;&emsp;&emsp;Tallis Group values your feedback. Transmission fees may apply.&emsp;&emsp;&emsp;&emsp;Please keep all existential crises within your scheduled break.&emsp;&emsp;&emsp;&emsp;The airlock is not a suggestion box.&emsp;&emsp;&emsp;&emsp;Five crew members. One station. Please try to keep both numbers unchanged.&emsp;&emsp;&emsp;&emsp;“It was like that when I got here” is not a maintenance report.&emsp;&emsp;&emsp;&emsp;You are closer to the stars than ever. Your annual leave request is still pending.</span>
+      <span class="motto-text" aria-hidden="true">Stay vigilant.&emsp;&emsp;&emsp;&emsp;Stay safe.&emsp;&emsp;&emsp;&emsp;All for one, and one for all.&emsp;&emsp;&emsp;&emsp;Caution: Slippery floors.&emsp;&emsp;&emsp;&emsp;No smoking aboard the space station. XD&emsp;&emsp;&emsp;&emsp;Before contacting Engineering, try restarting it. Unless it supplies oxygen.&emsp;&emsp;&emsp;&emsp;Your crewmates are not “non-essential equipment.” Stop listing them on disposal forms.&emsp;&emsp;&emsp;&emsp;Tallis Group values your feedback. Transmission fees may apply.&emsp;&emsp;&emsp;&emsp;Please keep all existential crises within your scheduled break.&emsp;&emsp;&emsp;&emsp;The airlock is not a suggestion box.&emsp;&emsp;&emsp;&emsp;Five crew members. One station. Please try to keep both numbers unchanged.&emsp;&emsp;&emsp;&emsp;“It was like that when I got here” is not a maintenance report.&emsp;&emsp;&emsp;&emsp;You are closer to the stars than ever. Your annual leave request is still pending.</span>
+    </span>
+  </p>
+  <main class="messages-layout">
+  <nav class="station-sidebar" aria-label="Station navigation">
+    <a class="sidebar-brand" href="#messages">✳ STATION</a>
+    <p class="eyebrow">STATION DIRECTORY</p>
+    <div class="sidebar-links">
+      <a href="#overview" data-view="overview">Station Overview</a>
+      <a href="#roster" data-view="roster">Scheduled Tasks Module</a>
+      <a href="#tickets" data-view="tickets">Maintenance tickets</a>
+      <a href="#members" data-view="members">Crew Members</a>
+      <a href="#messages" data-view="messages" aria-current="page">Messages</a>
+    </div>
+  </nav>
+  <section class="conversation" aria-label="Conversation">
+    <header class="conversation-header">
+      <h1>Messages</h1>
+      <span id="account-name" class="account-name"></span>
+      <button id="sign-out" class="quiet-button" type="button">Sign out</button>
+    </header>
+    <section id="module-content" class="module-content" aria-label="Station module" tabindex="0" hidden>
+      <article id="station-overview" class="station-overview" aria-labelledby="overview-title" hidden>
+        <p class="eyebrow">TALLIS GROUP / EREBUS STATION</p>
+        <h2 id="overview-title">Welcome to Erebus</h2>
+        <p>Operated by Tallis Group, Erebus is home to five dedicated crew members and ORACLE, the station AI that would like to remind you it is not a crew member and does not cover extra shifts.</p>
+        <p>Our mission is to support scientific research, maintain essential systems, and demonstrate that five people can share a workplace without opening an airlock over a minor disagreement.</p>
+        <p class="overview-tagline">Tallis Group: bringing humanity closer to the stars, and slightly further from technical support.</p>
+      </article>
+      <div id="crew-profiles" class="crew-list" hidden>
+        <article class="crew-profile" aria-labelledby="crew-name-1">
+          <div class="crew-avatar" aria-hidden="true">JH</div>
+          <p class="eyebrow">CREW MEMBER / 001</p>
+          <h2 id="crew-name-1">Jin Hong</h2>
+          <p class="crew-role">Captain</p>
+          <p>Calm, brave, and steady under pressure. His measured words keep the crew together when things go wrong.</p>
+        </article>
+        <article class="crew-profile" aria-labelledby="crew-name-2">
+          <div class="crew-avatar" aria-hidden="true">EV</div>
+          <p class="eyebrow">CREW MEMBER / 002</p>
+          <h2 id="crew-name-2">Eli Voss</h2>
+          <p class="crew-role">First Officer</p>
+          <p>Dry, sardonic, and watchful. He cracks jokes while taking precautions others dismiss as paranoia.</p>
+        </article>
+        <article class="crew-profile" aria-labelledby="crew-name-3">
+          <div class="crew-avatar" aria-hidden="true">BO</div>
+          <p class="eyebrow">CREW MEMBER / 003</p>
+          <h2 id="crew-name-3">Bem Okafor</h2>
+          <p class="crew-role">Chief Engineer</p>
+          <p>An experienced, grumpy engineer with little patience for nonsense. “Reboot it and leave me alone.”</p>
+        </article>
+        <article class="crew-profile" aria-labelledby="crew-name-4">
+          <div class="crew-avatar" aria-hidden="true">YN</div>
+          <p class="eyebrow">CREW MEMBER / 004</p>
+          <h2 id="crew-name-4">Yara Nassar</h2>
+          <p class="crew-role">Medical Officer</p>
+          <p>Precise and compassionate. Her clinical composure begins to fray as the situation worsens.</p>
+        </article>
+        <article class="crew-profile" aria-labelledby="crew-name-5">
+          <div class="crew-avatar" aria-hidden="true">RB</div>
+          <p class="eyebrow">CREW MEMBER / 005</p>
+          <h2 id="crew-name-5">Roman Beck</h2>
+          <p class="crew-role">Researcher</p>
+          <p>Brilliant, obsessive, and secretive. He keeps much of his work out of the shared logs.</p>
+        </article>
+      </div>
+      <div id="station-app-panel" hidden></div>
+    </section>
+    <div id="message-scroll" class="message-scroll" tabindex="0" aria-label="Messages">
+      <button id="older" class="quiet-button load-more" type="button" hidden>Load earlier messages</button>
+      <p id="list-status" class="field-note" role="status">Loading messages…</p>
+      <button id="retry" class="quiet-button" type="button" hidden>Try again</button>
+      <div id="message-list" aria-busy="true"></div>
+      <p id="no-messages" class="conversation-empty" hidden>No messages yet.</p>
+    </div>
+    <form id="send-form" class="conversation-compose" action="/api/messages/private" method="post">
+      <label class="visually-hidden" for="new-message">Message</label>
+      <div class="compose-row">
+        <textarea id="new-message" name="message" placeholder="Write a message…" maxlength="2000" rows="2" required></textarea>
+        <button id="send" type="submit">Send ↗</button>
+      </div>
+      <p id="send-status" class="form-status" role="status" aria-live="polite"></p>
+      <noscript><p class="error">Enable JavaScript to use Messages.</p></noscript>
+    </form>
+  </section>
+  <aside class="memo-panel" aria-labelledby="memo-title">
+    <h2 id="memo-title">Personal memo</h2>
+    <p class="muted">Just for you.</p>
+    <form id="memo-form">
+      <label class="visually-hidden" for="memo-content">Personal memo</label>
+      <textarea id="memo-content" placeholder="Notes to remember…" maxlength="10000" disabled></textarea>
+      <button id="save-memo" class="submit" type="submit" disabled>Save note</button>
+      <p id="memo-status" class="form-status" role="status">Loading your memo…</p>
+      <button id="retry-memo" class="quiet-button" type="button" hidden>Retry loading</button>
+    </form>
+  </aside>
+  </main>
+</body>
+</html>

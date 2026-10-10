@@ -1,0 +1,8 @@
+Coolant Flow Note — Power Distribution / Reactor Control
+Station: Erebus | Subsystem: Reactor coolant loop
+
+2026-09-03 15:00 — Engineering round:
+  Coolant flow 94%, inlet 21.5C, outlet 24.1C. Within band.
+  Filter 82%. No action.
+
+Disposition: nominal.

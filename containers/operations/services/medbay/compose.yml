@@ -1,0 +1,23 @@
+services:
+  medbay:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "127.0.0.1:18082:8080"
+    environment:
+      MEDBAY_MID_FLAG: "${MEDBAY_MID_FLAG:-CTF{medbay_wyan_last_seen_034217}}"
+      MEDBAY_HARD_FLAG: "${MEDBAY_HARD_FLAG:-CTF{medbay_failsafe_reused_credential}}"
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 64
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health', timeout=2).read()"]
+      interval: 5s
+      timeout: 3s
+      retries: 5

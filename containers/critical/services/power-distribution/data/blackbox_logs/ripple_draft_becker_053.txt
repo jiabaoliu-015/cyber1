@@ -1,0 +1,4 @@
+Blackbox Telemetry — Ripple draft (frames 53-54)
+2026-09-02 — Becker notebook (transcribed, UNVERIFIED):
+  Claims key is BECK-4217-K8. Engineering: WRONG. Off by one.
+  Do not use. Canonical tag is in telemetry_key_052.txt.

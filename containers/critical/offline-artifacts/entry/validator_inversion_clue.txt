@@ -1,0 +1,13 @@
+LOCAL_CONTROL_SERVICE'S RECOVERED ARTIFACT 2 — RECOVERY ARCHIVE
+
+The archive rejects ordinary maintenance credentials.
+It accepts one 16-character recovery key, but the validation rules were left
+inside the local `artifact2_binary` tool rather than written down in an email.
+
+The friend’s final note reads:
+
+    “Do not guess. Follow what the archive actually checks.
+     Every turn in the lock has a pattern.”
+
+Start with ordinary local binary analysis. The archive is deterministic and
+never needs network access.

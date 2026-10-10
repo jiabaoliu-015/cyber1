@@ -1,0 +1,50 @@
+#!/usr/local/bin/python3
+"""Root diagnostic worker invoked by cron; consumes low-privilege input."""
+import argparse
+import json
+import os
+from pathlib import Path
+
+RUN_DIR = Path(os.environ.get("HVAC_RUN_DIR", "/var/run/hvac"))
+INPUT_FILE = RUN_DIR / "input"
+REPORT_FILE = RUN_DIR / "maintenance_report.txt"
+CRON_FILE = Path("/etc/cron.d/hvac-diagnostic")
+
+
+def run() -> dict:
+    RUN_DIR.mkdir(parents=True, exist_ok=True)
+    content = INPUT_FILE.read_text(errors="replace") if INPUT_FILE.exists() else ""
+    if content.strip() != "run_diagnostic":
+        return {"status": "idle", "detail": "input does not request a diagnostic run"}
+    flag = (RUN_DIR / "worker.env").read_text().strip()
+    if not flag:
+        raise RuntimeError("Runtime HVAC flag is missing")
+    REPORT_FILE.write_text(
+        "HVAC maintenance report — Thermal Regulation / HVAC Control\n"
+        "diagnostic: OK (supply 21.5C, return 24.1C, filter 82%)\n"
+        f"flag: {flag}\n"
+    )
+    if os.geteuid() == 0:
+        os.chown(REPORT_FILE, 0, 1002)
+    os.chmod(REPORT_FILE, 0o640)
+    return {"status": "success", "report": str(REPORT_FILE)}
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("operation", nargs="?", default="run", choices=("run", "inspect", "challenge"))
+    parser.add_argument("--healthcheck", action="store_true")
+    args = parser.parse_args()
+    if args.healthcheck:
+        print(json.dumps({"status": "running", "cron_exists": CRON_FILE.exists(), "container_scoped": True}, indent=2))
+    elif args.operation == "inspect":
+        print(json.dumps({"cron": str(CRON_FILE), "input": str(INPUT_FILE), "report": str(REPORT_FILE)}, indent=2))
+    elif args.operation == "challenge":
+        print(json.dumps({"status": "info", "detail": "Predict engineer token, then abuse the root diagnostic job via its writable input."}, indent=2))
+    else:
+        print(json.dumps(run(), indent=2))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

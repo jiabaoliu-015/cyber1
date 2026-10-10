@@ -1,0 +1,6 @@
+Thermal Bypass Attempt — Engineering (frames 55-56)
+2026-09-03 — Incident:
+  Becker attempted a thermal bypass near feeder K-9 with a condensate
+  notebook of ripple timings. Stopped by shift lead. Note: ripple
+  timings alone are NOT the key — the asset tag is. Old note saying
+  `scram-reactor` (with hyphen) is wrong; the job wants `scram_reactor`.

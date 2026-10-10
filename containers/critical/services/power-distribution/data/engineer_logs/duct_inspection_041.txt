@@ -1,0 +1,10 @@
+Engineer Log — Duct Inspection 041 — Thermal Regulation / HVAC Control
+Station: Erebus | Engineer: H. Mercer (uid 1002) | Date: 2026-08-31
+
+- Inspected branches C-1 through C-4. Found damper C-3 at 40% travel.
+  Freed linkage, re-tested to 95%. Airflow restored.
+- Old note (IGNORE — superseded): scheduler input used to live at
+  /tmp/hvac_input and cron ran /usr/local/bin/diag.sh. Both wrong now.
+  Current paths are in GET /api/schedule. Trust the API, not this old note.
+- No flag in ductwork. Flag only appears in maintenance_report.txt
+  after a successful root diagnostic run.

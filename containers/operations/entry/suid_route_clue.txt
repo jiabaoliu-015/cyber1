@@ -1,0 +1,22 @@
+==========================================
+MAINTENANCE UTILITY — SUID-ROOT DISCOVERY CLUES
+==========================================
+
+Location: /opt/suseid/maintenance_utility (within container A)
+
+ENUMERATION COMMANDS (run within container):
+  find / -perm -4000
+
+KEY INSIGHTS:
+  • SUID preserves root permissions when invoked
+  • Crafted arguments trigger root operations
+  • The vulnerability accepts inputs you control
+
+TRY THESE OPERATIONS:
+  /opt/suseid/maintenance_utility --challenge
+  /opt/suseid/maintenance_utility print_flag
+  /opt/suseid/maintenance_utility create_file
+
+ROOT FLAG: CITS3006_ROOT_FLAG
+AFTER ROOT: read `post_root_handoff.txt` in this recovery pack.
+==========================================

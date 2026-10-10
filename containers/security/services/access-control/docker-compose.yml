@@ -1,0 +1,17 @@
+# Erebus Access Control chain — self-contained, single-container stack.
+#
+#   gh0st / controlsvc  --sudo zonectl sync--sync-as y.wu --shell-->  y.wu
+#   y.wu                --sudo run-diagnostics.sh (PATH-hijack)-------->  labctl
+#   labctl can read /opt/station/modules/research_lab/logs/.mid_flag; the flag lands in logactivity.log.
+#
+# This stack is standalone, same reasoning as network-chain/: integrating it
+# into the unified campaign (one shared station terminal for every chain) is a
+# deliberate later step, not an overwrite.
+services:
+  access_control_terminal:
+    container_name: erebus-access_control_terminal
+    build: { context: ./access_control_terminal }
+    hostname: erebus
+    environment:
+      - MID_FLAG=${MID_FLAG:-CTF{PLACEHOLDER_cant_read_this_yet}}
+    ports: [ "2223:22" ]

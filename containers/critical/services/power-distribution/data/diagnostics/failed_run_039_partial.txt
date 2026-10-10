@@ -1,0 +1,6 @@
+HVAC maintenance report — Thermal Regulation / HVAC Control (ARCHIVED — FAILED)
+diagnostic: FAILED (aborted: input "RUN_DIAGNOSTIC" did not request a diagnostic run)
+supply 21.6C, return 24.0C, filter 79%
+Job status was idle. Case-sensitive trigger required.
+note: archived failed run 039. Real report is only at
+/var/run/hvac/maintenance_report.txt after status success.

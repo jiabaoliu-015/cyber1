@@ -1,0 +1,11 @@
+Shift Handover — Epsilon 045 — Thermal Regulation / HVAC Control
+Station: Erebus | Watch: 08:00-16:00 | Lead: T. Nguyen
+
+- Supply 23.1C, return 27.6C, filter 90%. Creche moved, galley spoiling,
+  Deck D sleeping in mess hall. Everyone is too hot to work full shifts.
+- Becker worse. Found inside duct branch D-2 with a stethoscope pressed to
+  the metal, whispering back at the 17 Hz hum (see acoustic_hum_analysis.txt).
+  Said the object "tastes the air through the vents" and the heat is it
+  "dreaming." Ordered off tools pending medical clearance.
+- Junior tech asked if the flag is in the shift notes. It is not.
+  Flag only comes from live /api/maintenance/report after success.

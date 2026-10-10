@@ -1,0 +1,25 @@
+Command Decision — Containment Request DENIED — Station Erebus
+Date: 2026-09-02 | From: Captain Jin Hong to Engineering + Science
+
+Request: jettison Object K-9 or move it to external pallet until thermal
+and medical effects understood (citing 28C+ station temps, Becker incident,
+sickbay load).
+
+Decision: DENIED for now. Reasons: object may be mission-critical science;
+external pallet has no monitoring; command wants continuous thermal logging
+to prove causation before risking the find. Revisit in 48h if return air
+hits 29C (compressor trip threshold).
+
+Orders instead:
+1. Manage heat via Thermal Regulation / HVAC Control — run the full
+   engineer-authorized diagnostic (root job) and follow its maintenance
+   report. Routine checks are not enough anymore.
+2. Buddy system, no solo aft-hold/duct work. Walk Becker back if found there.
+3. Sickbay to log all heat cases. Science to keep logging object temps.
+
+Crew reaction (unofficial): groans all over the mess. It is TOO HOT to sleep,
+too hot to eat, too hot to think, and we are keeping the space heater.
+So be it — cool the station around it.
+
+No flag in this denial. The flag is earned by fixing the air, not by
+jettisoning the plot device.

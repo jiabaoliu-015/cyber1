@@ -1,0 +1,12 @@
+Laundry Steam Leak + Heat — Thermal Regulation / HVAC Control
+Station: Erebus | Zone: Laundry, Deck B | Date: 2026-09-02
+
+Laundry dryer vent back-feeding into HVAC return. Laundry air 29.1C,
+humidity 81%. Crew coming out dizzy after 10 min shifts.
+
+Tech note: isolated dryer damper shut, but returns station-wide still 27C+.
+So the laundry is a contributor, NOT the cause. Main Thermal Regulation
+fault is elsewhere — aft hold runs hot even with laundry isolated
+(see research note: object_thermal_output.txt).
+
+No flag in the laundry. Just steam, sweat, and a broken damper seal.

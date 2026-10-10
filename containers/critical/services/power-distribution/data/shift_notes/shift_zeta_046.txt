@@ -1,0 +1,13 @@
+Shift Handover — Zeta 046 — Thermal Regulation / HVAC Control
+Station: Erebus | Watch: 16:00-00:00 | Lead: S. Patel
+
+- Supply 23.4C, return 28.0C, filter 91%. Worst yet. Portable coolers
+  failing one by one. Corridor decks shimmering with heat haze near aft hold.
+- New rule: NO SOLO DUCT RUNS. Buddy system after Becker incidents.
+  Becker keeps volunteering for aft-hold checks alone. Denied twice this shift.
+  He stood at the vent grille for 20 minutes just breathing the hot air,
+  smiling. It was 28C air. Nobody smiles in 28C air.
+- Scheduler: cron confirmed, paths confirmed. Waiting on engineer token
+  watch to POST the correct trigger. Default logins keep getting 403 —
+  that is the drill working as intended.
+- No flags in shift notes. Stop grep-hunting here.

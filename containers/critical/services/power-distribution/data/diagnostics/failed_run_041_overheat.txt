@@ -1,0 +1,6 @@
+HVAC maintenance report — Thermal Regulation / HVAC Control (ARCHIVED — FAILED)
+diagnostic: FAILED (aborted: input "run diagnostic" with a SPACE did not request a diagnostic run)
+supply 23.1C, return 27.6C, filter 90%
+Trigger is exactly run_diagnostic with underscore, lower case.
+note: the station was already too hot during this attempt (see shift_epsilon_045.txt).
+Heat does not change the trigger phrase. Spelling does.

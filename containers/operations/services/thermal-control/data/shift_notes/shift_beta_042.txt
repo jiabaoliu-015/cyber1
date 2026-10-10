@@ -1,0 +1,10 @@
+Shift Handover — Beta 042 — Thermal Regulation / HVAC Control
+Station: Erebus | Watch: 08:00-16:00 | Lead: T. Nguyen
+
+- Supply 21.6C, return 24.0C, filter 78%. Galley load high at lunch.
+- Wiped mess hall pre-filter. Return dropped 0.4C. Crew happy.
+- Tried input "RUN_DIAGNOSTIC" (upper case) — job stayed idle. Case matters.
+- Tried input "run diagnostics" (plural) — idle again.
+- Reminder: only the engineer role can write scheduler input. Default tokens
+  get 403 on /api/hvac/status. Predict the engineer token first.
+- No maintenance report with flag this shift.

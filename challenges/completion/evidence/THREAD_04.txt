@@ -1,0 +1,5 @@
+RECOVERED OBSERVATION LOG — THREAD_04
+
+The Web was not only tracking the missing friend. It recorded every recovery
+step taken after the dead-man switch fired: Crew Portal, Comms Relay, Station SSH, and
+the protected archives. The investigator has now reproduced the same pattern.

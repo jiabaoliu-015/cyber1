@@ -1,0 +1,25 @@
+==========================================
+LOCAL CONTROL SERVICE — Local Root Service
+==========================================
+
+Location: /opt/bw/service (within container C)
+Interface: 127.0.0.1:8080 (local access only)
+
+INSPECT THIS FILE:
+  ss -tlnp | grep ":8080"
+  netstat -tlnp
+
+KEY INSIGHTS:
+  • Find root-owned local-only service interface
+  • Identify the method — socket, HTTP, SSH, or another local interface
+  • Restrict access — limit which methods can be exploited
+  • This is the local trust boundary — root service accessible only within container
+
+TRY THESE OPERATIONS:
+  /opt/bw/service inspect
+  /opt/bw/service print_flag
+  /opt/bw/service verify_interface
+
+ROOT FLAG: CITS3006_ROOT_FLAG
+AFTER ROOT: read `post_root_handoff.txt` in this recovery pack.
+==========================================

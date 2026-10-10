@@ -1,0 +1,9 @@
+# Dev override for rebuild-free text iteration. NOT used by the shipped lab.
+#
+#   docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
+#   # edit any text under access_control_terminal/rootfs/opt/station/ , then:
+#   docker-compose -f docker-compose.yml -f docker-compose.dev.yml restart access_control_terminal
+services:
+  access_control_terminal:
+    volumes:
+      - ./access_control_terminal/rootfs/opt/station:/opt/station:ro

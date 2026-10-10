@@ -1,0 +1,17 @@
+CORIOLIS ROOT RECOVERY PACK
+
+Root access exposed the missing researcher's protected local artefacts.
+
+Start with the independent challenge cards in `../docs/` and the clues in this
+directory. Recovered Artifacts 1–3 and the station audit corroborate the investigation;
+Uplink Vault is the intended evidence branch for the Incident Archive.
+
+Run Uplink Vault from this directory:
+  python3 scripts/reset_crypto_lab.py
+  python3 solvers/crypto_solver.py
+
+Keep its exact output. It has the form `THREAD_02=...` and is supplied to:
+  ../../../../challenges/completion/scripts/assemble_evidence.py --thread-02 '<record>'
+
+The Incident Archive locator is at `../../../../challenges/completion/entry/completion_locator.txt`.
+No password guessing or brute force is required.

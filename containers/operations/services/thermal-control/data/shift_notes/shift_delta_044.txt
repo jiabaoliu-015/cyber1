@@ -1,0 +1,12 @@
+Shift Handover — Delta 044 — Thermal Regulation / HVAC Control
+Station: Erebus | Watch: 00:00-08:00 | Lead: R. Alvarez
+
+- Supply 22.8C (drifting UP from 21.5C setpoint), return 27.1C, filter 88%.
+  System cannot hold setpoint. HVAC/temp control is failing station-wide.
+- J. Becker missed 0400 check-in. Found at 0515 in Deck D service shaft,
+  coveralls soaked, notebook full of wavy lines matching condensation
+  trails on the duct. Said "the stone breathes and the station breathes with it."
+  Sent to bunk, flagged for sickbay review (see quarantine_note_becker.txt).
+- Tried scheduler input "run diagnostics" again — idle. Check history,
+  stop guessing variants. Only one exact phrase works.
+- No successful maintenance report this shift. Station still too hot.

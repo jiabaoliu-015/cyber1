@@ -1,0 +1,7 @@
+Failed Scram Run 058 — Power Distribution / Reactor Control
+input contained: scramreactor (missing underscore)
+result: idle — input does not request a reactor scram
+Power Distribution / Reactor Control — scram report
+kernel: rod insertion nominal, bus load shed OK, coolant flow 94%
+Note: archived failure. Live report requires `scram_reactor` plus
+Two Key authorization. Compare with /api/reactor/report.

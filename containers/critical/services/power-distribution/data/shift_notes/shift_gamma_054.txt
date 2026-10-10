@@ -1,0 +1,5 @@
+Shift Gamma — Power watch (frames 54-55)
+2026-09-03 06:00 — Handover:
+  Flicker reported on two decks. Ripple correlates with shift change,
+  per blackbox telemetry. Recommend officer review of side-channel
+  notes, not a scram.

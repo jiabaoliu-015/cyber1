@@ -1,0 +1,6 @@
+Blackbox Telemetry — Optics portrait log (frames 55-56)
+2026-09-03 — Archivist:
+  Portrait file: astronaut_stego.jpeg (source: crew portrait
+  astronaut.jpeg). Renders normally in all viewers — JPEG decoders
+  stop at EOI. Payload appended after EOI; `strings` shows the marker.
+  LSB/pixel steg tools will find nothing: look at the tail, not pixels.

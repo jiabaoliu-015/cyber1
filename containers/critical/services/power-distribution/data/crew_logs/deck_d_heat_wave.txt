@@ -1,0 +1,18 @@
+Deck D Heat Wave — Thermal Regulation / HVAC Control
+Station: Erebus | Zone: Deck D crew quarters + workshops | Date: 2026-09-02
+
+2026-09-02 01:10 — A. Diallo (Deck D, bunk 03):
+  Cabin 27.2C at 0100. Fans on max, still sweating through sheets.
+  Vent blowing lukewarm. This is the third night. Can't sleep.
+
+2026-09-02 03:45 — R. Alvarez (watch officer):
+  Walked Deck D with handheld probe: supply vents 23.9C (should be 21.5C),
+  returns 28.4C. Filter 88%. Thermal Regulation is losing everywhere at once.
+
+2026-09-02 07:20 — Workshop crew:
+  Tools too hot to hold after autoclave cycle. Break room 27.8C.
+  Requesting portable coolers. Two crew treated for heat rash in sickbay
+  (see medical log: sickbay_heat_cases.txt).
+
+Disposition: NOT a sensor fault — three independent probes agree.
+Full engineer diagnostic required. Complaint logs carry no flag.

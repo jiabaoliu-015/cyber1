@@ -1,0 +1,5 @@
+Shift Epsilon — Power watch (frames 56-57)
+2026-09-04 06:00 — Handover:
+  Quiet night. Coolant nominal. Someone tried `scramreactor` (no
+  underscore) in the input box — job stayed idle. Spelling matters:
+  trust GET /api/schedule, not hallway notes.

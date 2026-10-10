@@ -1,0 +1,19 @@
+Research Note — Acoustic Hum Analysis (17 Hz) — Station Erebus
+Date: 2026-09-01 | Author: Researcher Wu Yan + H. Mercer
+
+Crew report a hum "under" the fan noise, strongest in ducts near aft hold.
+Measurement: narrowband peak at ~17 Hz, amplitude tracking fan speed AND
+object temperature. It is real (not imagination), but it is plumbing, not voices:
+
+- 17 Hz is just below clear hearing; you feel it in teeth/chest more than ears.
+- Duct resonance amplifies it in branches D-2/D-4. Stethoscope on metal
+  makes it loud — which is why Becker won't put his down.
+- Sleep-deprived brains pattern-match hum to speech/music. That is why the
+  night-watch cards mention whispering. Play white noise and it fades.
+
+Becker note: he is not the only one who hears it, he is just the only one
+who answers it back. Kindly stop answering it back. Wear earplugs, drink
+water, sleep in Deck A if you can. The hum has no flag and no message.
+
+Recommendation: isolate aft-hold return trunk acoustically when temps allow.
+For now, earplugs + buddy system.

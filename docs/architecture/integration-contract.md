@@ -1,0 +1,3 @@
+# Integration contract — current behavior
+
+`challenges/manifest.json` remains the authoritative inventory of 17 independent required challenge IDs and one optional ID; `challenges/completion/` remains a separate aggregate checker. Existing routes and receipts are not merged. `tests/integration/` retains the integration harness. The central Compose validates/builds the combined web/network stack; operations routes are started separately. Do not infer a five-container runtime contract from the target directories. See `../challenge-design/migration-verification.md` for tests and unresolved baseline issues.

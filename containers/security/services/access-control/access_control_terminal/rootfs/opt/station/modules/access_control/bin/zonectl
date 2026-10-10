@@ -1,0 +1,161 @@
+#!/usr/bin/env python3
+"""
+zonectl — Access Control Daemon (acctld) operator CLI.
+
+Queries and manages station zone/badge access. Two ordinary subcommands
+(`status`, `grant`) plus a `sync` maintenance subcommand added during the
+company recovery effort so a reclaimed control-services account could refresh
+a crew member's badge cache without waiting on acctld's own slow nightly job.
+
+INTENTIONAL VULNERABILITY (station Access Control chain — horizontal move):
+
+  * `/etc/sudoers.d/90-recovery-access` grants controlsvc/gh0st NOPASSWD root
+    execution of this exact binary, on the assumption that "sync" only ever
+    touches a caller's own badge cache during recovery.
+  * `sync` never checks that assumption: it accepts ANY existing account name
+    (there is no allowlist — see ALLOWED_SYNC_TARGETS below) and, worse, ships
+    a `--shell` debug flag that was "temporary, for verifying the resync
+    worked" and was never removed.
+  * Because zonectl itself runs as root (via the sudoers rule), it can drop
+    privileges to *any* target user it likes. `--sync-as y.wu --shell`
+    therefore hands the caller an interactive shell as `y.wu` — a
+    horizontal move to a different, unrelated account, not the caller's own.
+
+This is deliberately NOT a SUID binary and NOT "sudo grants root" in itself —
+the daemon's own target-selection logic is the bug, which is why fixing the
+sudoers entry alone (e.g. quoting arguments) would not be enough; `sync` needs
+an actual allowlist of legitimate self-service targets.
+"""
+import argparse
+import datetime
+import json
+import os
+import pwd
+import sys
+
+DATA_DIR = "/opt/station/modules/access_control/data"
+LOG_DIR = "/opt/station/modules/access_control/logs"
+ZONE_MAP_PATH = os.path.join(DATA_DIR, "zone_map.json")
+AUDIT_LOG_PATH = os.path.join(LOG_DIR, "zone_audit.log")
+
+# BUG: this is exactly the fix that was never made. It's read but never
+# populated/enforced anywhere below — `do_sync` does not consult it.
+ALLOWED_SYNC_TARGETS: list[str] = []
+
+
+def _now() -> str:
+    return datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def _audit(event: str) -> None:
+    # Best-effort: the audit log is root-owned, so an unprivileged read-only
+    # call (e.g. `zonectl status` as a crew account) can't append to it. That
+    # must not crash the command — the privileged `sync` path runs as root via
+    # sudo and records fine, which is the invocation that actually matters.
+    try:
+        os.makedirs(LOG_DIR, exist_ok=True)
+        with open(AUDIT_LOG_PATH, "a") as f:
+            f.write(f"{_now()} uid={os.getuid()} euid={os.geteuid()} {event}\n")
+    except OSError:
+        pass
+
+
+def _load_zone_map() -> dict:
+    try:
+        with open(ZONE_MAP_PATH) as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {}
+
+
+def _save_zone_map(data: dict) -> None:
+    os.makedirs(DATA_DIR, exist_ok=True)
+    with open(ZONE_MAP_PATH, "w") as f:
+        json.dump(data, f, indent=2, sort_keys=True)
+
+
+def do_status(target: str | None) -> int:
+    zones = _load_zone_map()
+    if target:
+        print(json.dumps({target: zones.get(target, [])}, indent=2))
+    else:
+        print(json.dumps(zones, indent=2))
+    _audit(f"STATUS target={target or 'ALL'}")
+    return 0
+
+
+def do_grant(target: str, zone: str) -> int:
+    zones = _load_zone_map()
+    zones.setdefault(target, [])
+    if zone not in zones[target]:
+        zones[target].append(zone)
+    _save_zone_map(zones)
+    _audit(f"GRANT target={target} zone={zone}")
+    print(f"zonectl: granted {target} -> {zone}")
+    return 0
+
+
+def do_sync(target: str, shell: bool) -> int:
+    try:
+        pw = pwd.getpwnam(target)
+    except KeyError:
+        print(f"zonectl: unknown user '{target}'", file=sys.stderr)
+        return 1
+
+    _audit(f"SYNC target={target} shell={shell} requested_by_uid={os.getuid()}")
+
+    # --- the missing check that would have made this safe ---
+    # if target not in ALLOWED_SYNC_TARGETS:
+    #     print("zonectl: sync target not permitted", file=sys.stderr)
+    #     return 1
+    # -----------------------------------------------------------
+
+    os.setgroups([])
+    os.setgid(pw.pw_gid)
+    os.setuid(pw.pw_uid)
+    os.environ["HOME"] = pw.pw_dir
+    os.environ["USER"] = target
+    os.environ["LOGNAME"] = target
+
+    if shell:
+        # "temporary" verification hook. never removed.
+        os.execvp("/bin/bash", ["/bin/bash"])
+        return 127  # unreachable if exec succeeds
+
+    cache_path = os.path.join(pw.pw_dir, ".badge_cache.json")
+    with open(cache_path, "w") as f:
+        json.dump({"user": target, "resynced_at": _now()}, f)
+    print(f"zonectl: badge cache resynced for {target}")
+    return 0
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(prog="zonectl", description="Access Control Daemon operator CLI")
+    sub = parser.add_subparsers(dest="cmd", required=True)
+
+    p_status = sub.add_parser("status", help="show zone grants")
+    p_status.add_argument("target", nargs="?", default=None)
+
+    p_grant = sub.add_parser("grant", help="grant a zone to a user")
+    p_grant.add_argument("target")
+    p_grant.add_argument("zone")
+
+    p_sync = sub.add_parser("sync", help="[recovery] resync a user's badge cache")
+    p_sync.add_argument("--sync-as", dest="target", required=True)
+    p_sync.add_argument("--shell", action="store_true",
+                         help="debug: drop into a shell as the target instead of writing the cache")
+
+    args = parser.parse_args()
+
+    if args.cmd == "status":
+        return do_status(args.target)
+    if args.cmd == "grant":
+        return do_grant(args.target, args.zone)
+    if args.cmd == "sync":
+        return do_sync(args.target, args.shell)
+    parser.print_help()
+    return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

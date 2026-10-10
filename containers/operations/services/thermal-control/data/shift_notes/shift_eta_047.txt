@@ -1,0 +1,13 @@
+Shift Handover — Eta 047 — Thermal Regulation / HVAC Control
+Station: Erebus | Watch: 00:00-08:00 | Lead: R. Alvarez
+
+- Supply 23.6C, return 28.3C, filter 93%. System redlined. If return hits
+  29C the compressor trips and we lose cooling entirely.
+- Becker did not report for shift. Bunk empty, blanket damp with condensation,
+  notebook gone. Last seen heading aft with a headlamp. Security notified,
+  buddy team sent. Aft hold runs 31C near the object cradle — nobody should
+  be down there without orders (see object_k9_recovery.txt).
+- To the next engineer watch: the station is too hot to sleep, too hot to work,
+  too hot to think. POST the trigger to /api/schedule/input and pull
+  /api/maintenance/report. The routine checks (history) never had flags —
+  only the live root run does.
